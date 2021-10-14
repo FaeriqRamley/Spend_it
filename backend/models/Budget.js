@@ -9,27 +9,33 @@ const Budget = db.define("Budget",{
     },
     users_uuid: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        required:true
     },
     total: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull:false
+        allowNull:false,
+        required:true
     },
     current: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull:false
+        allowNull:false,
+        required:true
     },
     title: {
         type: DataTypes.STRING(64),
-        allowNull: false
+        allowNull: false,
+        required:true,
     },
     date_start: {
         type: DataTypes.DATEONLY,
         allowNull:false,
+        required:true
     },
     date_end: {
         type: DataTypes.DATEONLY,
-        allowNull:false
+        allowNull:false,
+        required:true
     }
 },{
     tableName: "Budgets",

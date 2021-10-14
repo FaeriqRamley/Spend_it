@@ -1,4 +1,5 @@
 const Expense = require("../models/Expense");
+const Budget = require("../models/Budget");
 const {sequelize,Op} = require("sequelize");
 
 module.exports.get_viewUser = async (req,res) => {
@@ -37,7 +38,26 @@ module.exports.get_search = async (req,res) => {
 
 module.exports.post_addExpense = async (req,res) => {
     try{
-        await Expense.create({...req.body, users_uuid:req.params.useruuid});
+        const relevantBudget = await Budget.findOne({
+            where:{
+                [Op.and]: [
+                    {title:req.body.category},
+                    {users_uuid:req.params.useruuid}
+                ]
+            }
+        })
+
+        let budget_uuid = null
+        if (relevantBudget){
+            budget_uuid = relevantBudget.uuid
+            if (req.body.is_income){
+                await relevantBudget.increment('current',{by:req.body.value})
+            } else{
+                await relevantBudget.decrement('current',{by:req.body.value})
+            }
+        }
+
+        await Expense.create({...req.body, users_uuid:req.params.useruuid,budget_uuid});
         res.status(201).send({message:"Expense Logged"});
     } catch (err) {
         res.status(400).send(err);
