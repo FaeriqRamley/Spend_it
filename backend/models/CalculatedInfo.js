@@ -4,7 +4,8 @@ const {db} = require("../postgresDB");
 const CalculatedInfo = db.define("Calculated_Info",{
     users_uuid: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        required: true
     },
     actual_income:{
         type: DataTypes.DECIMAL(10,2),

@@ -1,14 +1,13 @@
 const User = require("../models/User");
+const CalculatedInfo = require("../models/CalculatedInfo");
 
 module.exports.get_allUsers = async (req,res) => {
-    console.log("executing get all users")
     const allUsers = await User.findAll()
     console.log(allUsers);
     res.status(200).send(allUsers)
 }
 
 module.exports.get_currentUser = async (req,res) => {
-    console.log("get currentuser called")
     const currUser = await User.findOne({
         where: {
             uuid: req.body.uuid
@@ -19,9 +18,11 @@ module.exports.get_currentUser = async (req,res) => {
 }
 
 module.exports.post_createUser = async (req,res) => {
+    const newUser = User.build(req.body);
     try{
-        const newUser = await User.create(req.body);
-        res.status(201).send({message: "Created user"})
+        await newUser.save()
+        CalculatedInfo.create({users_uuid:newUser.uuid});       
+        res.status(201).send({message: "Created user"});
     } catch(err){
         res.status(400).send(err)
     }

@@ -9,27 +9,32 @@ const CashFlow = db.define("Cash_Flow",{
     },
     users_uuid: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        require:true
     },
     value: {
         type: DataTypes.DECIMAL(10,2),
-        allowNull:false
+        allowNull:false,
+        require:true
     },
-    last_payment_date: {
-        type:DataTypes.DATE
+    next_payment_date: {
+        type:DataTypes.DATE,
+        require:true
     },
     by_days: {
         type: DataTypes.BOOLEAN
     },
     period: {
         type: DataTypes.INTEGER,
+        allowNull:true
     },
     title: {
-        type: DataTypes.STRING(16)
+        type: DataTypes.STRING(32)
     },
     is_income: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        require:true
     },
     category: {
         type: DataTypes.STRING(64),
