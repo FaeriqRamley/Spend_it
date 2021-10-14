@@ -1,13 +1,26 @@
-const {DataTypes} = require("sequelize");
+const {Sequelize, DataTypes} = require("sequelize");
 const {db} = require("../postgresDB");
 
 const User = db.define('User',{
-    username: {type:DataTypes.STRING(64)},
-    password: {type:DataTypes.STRING(256)},
-    email: {type:DataTypes.STRING(256)}
+    uuid:{
+        type: DataTypes.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true
+    },
+    username: {
+        type:DataTypes.STRING(32),
+        defaultValue: "Anonymous"
+    },
+    password: {
+        type:DataTypes.STRING(128),
+        allowNull: false
+    },
+    email: {
+        type:DataTypes.STRING(256),
+        allowNull: false
+    }
 },{
-    tableName: "Users",
-    timestamps: true
+    tableName: "Users"
 });
 
 module.exports = User;
