@@ -8,37 +8,37 @@ const CalculatedInfo = require("./CalculatedInfo");
 const syncTables = async () => {
 
     try{
-        await UserModel.sync();
+        await UserModel.sync({alter:true});
     } catch(err){
         console.error(`Error syncing table: ${err}`);
     }
     
     try{
-        await ExpenseModel.sync();
+        await ExpenseModel.sync({alter:true});
     } catch(err){
         console.error(`Error syncing table: ${err}`);
     }
 
     try{
-        await CashFlowModel.sync();
+        await CashFlowModel.sync({alter:true});
     } catch(err){
         console.error(`Error syncing table: ${err}`);
     }
 
     try{
-        await BudgetModel.sync();
+        await BudgetModel.sync({alter:true});
     } catch(err){
         console.error(`Error syncing table: ${err}`);
     }
 
     try{
-        await SavingGoalModel.sync();
+        await SavingGoalModel.sync({alter:true});
     } catch(err){
         console.error(`Error syncing table: ${err}`);
     }
 
     try{
-        await CalculatedInfo.sync();
+        await CalculatedInfo.sync({alter:true});
     } catch(err){
         console.error(`Error syncing table: ${err}`);
     }

@@ -9,7 +9,8 @@ const Expense = db.define("Expense",{
     },
     users_uuid: {
         type: DataTypes.UUID,
-        allowNull: false
+        allowNull: false,
+        required: true
     },
     value: {
         type: DataTypes.DECIMAL(10,2),
@@ -17,7 +18,7 @@ const Expense = db.define("Expense",{
     },
     is_income:{
         type: DataTypes.BOOLEAN,
-        defaultValue:true
+        required:true
     },
     title: {
         type: DataTypes.STRING(64),
@@ -25,15 +26,17 @@ const Expense = db.define("Expense",{
     },
     date: {
         type: DataTypes.DATE,
-        allowNull: false 
+        allowNull: false,
+        required: true
     },
     category: {
         type: DataTypes.STRING(64),
-        allowNull: true
+        allowNull: true,
+        defaultValue: null
     },
     budget_uuid: {
-        type: DataTypes.UUIDV4,
-        allowNull: false
+        type: DataTypes.UUID,
+        allowNull: true
     }
 },{
     tableName: "Expenses",

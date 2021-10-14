@@ -13,11 +13,13 @@ const User = db.define('User',{
     },
     password: {
         type:DataTypes.STRING(128),
-        allowNull: false
+        allowNull: false,
+        require:true
     },
     email: {
         type:DataTypes.STRING(256),
-        allowNull: false
+        allowNull: false,
+        require:true
     }
 },{
     tableName: "Users"
