@@ -50,26 +50,26 @@ module.exports.get_login = async (req,res) => {
             email: req.body.email
         }
     })
-    
+
     if (!findUser) {
         return res.status(404).send({message:"User not found. Email is case sensitive."})
     }
     
-    // const validPassword = await bcrypt.compare(req.body.password,findUser.password)
+    const validPassword = await bcrypt.compare(req.body.password,findUser.password)
 
-    // if (!validPassword) {
-    //     res.status(400).send({message:"Password is incorrect"})
-    // }
+    if (!validPassword) {
+        return res.status(400).send({message:"Password is incorrect"})
+    }
 
-    // const user = {
-    //     uuid: findUser.uuid,
-    //     username: findUser.username,
-    //     email: findUser.email
-    // }
+    const user = {
+        uuid: findUser.uuid,
+        username: findUser.username,
+        email: findUser.email
+    }
 
-    // const accessToken = generateAccessToken(user);
-    // const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET);
-    // res.json({accessToken,refreshToken})
+    const accessToken = generateAccessToken(user);
+    const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET);
+    res.json({accessToken,refreshToken})
 }
 
 module.exports.get_refreshToken = async (req,res) => {
