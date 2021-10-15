@@ -1,6 +1,6 @@
 const Expense = require("../models/Expense");
 const Budget = require("../models/Budget");
-const {sequelize,Op} = require("sequelize");
+const {Op} = require("sequelize");
 
 module.exports.get_viewUser = async (req,res) => {
     try{
