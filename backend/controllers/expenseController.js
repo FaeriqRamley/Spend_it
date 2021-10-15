@@ -3,6 +3,7 @@ const Budget = require("../models/Budget");
 const {Op} = require("sequelize");
 
 module.exports.get_viewUser = async (req,res) => {
+    console.log(req.user);
     try{
         const userExpenses = await Expense.findAll({
             where:{
