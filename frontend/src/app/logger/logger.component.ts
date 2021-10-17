@@ -6,8 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logger.component.css']
 })
 export class LoggerComponent implements OnInit {
-
   constructor() { }
+  
+  favouriteColor = "red"
+  
+  handleButton(event:any){
+    event.preventDefault()
+    this.favouriteColor = "green"
+  }
 
   ngOnInit(): void {
   }
