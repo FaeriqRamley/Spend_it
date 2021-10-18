@@ -44,7 +44,7 @@ module.exports.post_signup = async (req,res) => {
 
 }
 
-module.exports.get_login = async (req,res) => {
+module.exports.post_login = async (req,res) => {
     const findUser = await User.findOne({
         where:{
             email: req.body.email
