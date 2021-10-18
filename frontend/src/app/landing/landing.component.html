@@ -10,7 +10,7 @@
         </div>
         <div class='row d-flex' style="justify-content: center;">
             <div class='col-10 col-md-8 col-lg-6 particulars-box'>
-                <form class='my-4'>
+                <form class='my-4' (submit)="handleSubmitLogin($event)">
                     <p class='err'>{{errMsg}}</p>
                     <div class='form-group'>
                         <label for='email'>Email Address</label>
@@ -67,4 +67,6 @@
             </div>
         </div>
     </ng-template>
+
+    <div>{{response|json}}</div>
 </div>
