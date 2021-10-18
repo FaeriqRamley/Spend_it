@@ -23,6 +23,7 @@ export class LandingComponent implements OnInit {
     event.preventDefault();
     this.userLogin = !this.userLogin;
     this.errMsg = '';
+    console.log(this.userService.currentUser.username)
   }
 
   handleSubmitLogin(event:any){
@@ -32,8 +33,6 @@ export class LandingComponent implements OnInit {
       password: this.userPassword
     };
     this.userService.loginUser(user)
-    .subscribe( data => this.response = data )
-
     console.log(user);
   }
 

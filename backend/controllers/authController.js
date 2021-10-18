@@ -73,11 +73,11 @@ module.exports.post_login = async (req,res) => {
     res.cookie(`refreshToken`,refreshToken,{
         maxAge: 1000 * 60 * 60 * 24 * 7,
         secure: true,
-        httpOnly: true
+        httpOnly: false
     });
 
     // Remove refresh token once out of testing
-    res.status(200).send({accessToken,refreshToken})
+    res.status(200).send({accessToken,refreshToken,user})
 }
 
 // Refresh not tested with cookies
