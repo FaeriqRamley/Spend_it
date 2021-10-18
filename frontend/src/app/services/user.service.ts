@@ -60,7 +60,6 @@ export class UserService {
     this.router.navigate(["/logger"]);
   }
 
-
   logoutUser(){
     this.currentUser = {
       uuid: '',
@@ -71,4 +70,9 @@ export class UserService {
     document.cookie = 'refreshToken=null;max-age=0';
     this.eventChange();
   }
+
+  userTokenRefresh(){
+    
+  }
+
 }
