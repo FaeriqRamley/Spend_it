@@ -39,8 +39,8 @@
         </div>
         <div class='row d-flex' style="justify-content: center;">
             <div class='col-10 col-md-8 col-lg-6 particulars-box'>
-                <form class='my-4'>
-                    <p class='err'>{{errMsg}}</p>
+                <form class='my-4' (submit)="handleSubmitSignup($event)">
+                    <div class='err'>{{errMsg}}</div>
                     <div class='form-group'>
                         <label for='username'>Username</label>
                         <input id='username' type='email' class='form-control' placeholder="User name" name='username' [(ngModel)]='userName'>

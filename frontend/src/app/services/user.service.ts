@@ -26,6 +26,22 @@ export class UserService {
     this.observableUser.next(this.currentUser);
   }
 
+  validateSignup(user:any){
+    console.log(user);
+    let outputErr:string = ""
+    if (user.userCfmPassword !== user.password){
+      outputErr += "Password does not match...\n"
+    }
+    if (user.password.length < 6){
+      outputErr += "Password too short. Min 8 chars...\n"
+    }
+    if (!user.email.includes("@")){
+      outputErr += "Invalid Email...\n"
+    }
+    console.log(outputErr);
+    return outputErr
+  }
+
   signupUser(signupInfo:Object){
     return this.http.post('http://localhost:5000/auth/signup',signupInfo);
   }

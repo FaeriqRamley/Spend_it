@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -8,7 +9,8 @@ import { UserService } from '../services/user.service';
 })
 export class LandingComponent implements OnInit {
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   public userLogin = true;
@@ -28,12 +30,26 @@ export class LandingComponent implements OnInit {
 
   handleSubmitLogin(event:any){
     event.preventDefault();
-    const user = {
+    const user = {email: this.userEmail,password: this.userPassword};
+    this.userService.loginUser(user);
+    this.router.navigate(["/logger"]);
+    console.log(user);
+  }
+
+  handleSubmitSignup(event:any){
+    event.preventDefault();    
+    const newUser = {
+      username: this.userName,
       email: this.userEmail,
       password: this.userPassword
-    };
-    this.userService.loginUser(user)
-    console.log(user);
+    }
+
+    this.errMsg = this.userService.validateSignup({...newUser, userCfmPassword:this.userCfmPassword});
+
+    if(typeof this.errMsg.length === "undefined"){
+      this.userService.signupUser(newUser);
+      this.router.navigate(["/landing"]);
+    }
   }
 
   ngOnInit(): void {

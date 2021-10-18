@@ -7,22 +7,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a [ngClass]="clsNavLink" routerLink="/logger">Expense Logger</a>
+                    <a [ngClass]="clsNavLink" routerLink="/logger" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Expense Logger</a>
                 </li>
                 <li class="nav-item">
-                    <a [ngClass]="clsNavLink" routerLink="/wallet">My Wallet</a>
+                    <a [ngClass]="clsNavLink" routerLink="/wallet" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">My Wallet</a>
                 </li>
                 <li class="nav-item">
-                    <a [ngClass]="clsNavLink" routerLink="/expenses">Expenses History</a>
+                    <a [ngClass]="clsNavLink" routerLink="/expenses" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Expenses History</a>
                 </li>
             </ul>
             <div class="d-flex" *ngIf="isLoggedIn">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/landing">{{username}}</a>
+                        <a class="nav-link" routerLink="/landing" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">{{username}}</a>
                     </li>
                     <li class="nav-item">
-                        <a class='nav-link' (click)='handleLogout($event)' routerLink="/landing">Log Out</a>
+                        <a class='nav-link' (click)='handleLogout($event)' routerLink="/landing" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Log Out</a>
                     </li>
                 </ul>
             </div>
