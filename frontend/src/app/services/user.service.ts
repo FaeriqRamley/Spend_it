@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable,throwError,BehaviorSubject } from 'rxjs';
 import {catchError,retry} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.observableUser = new BehaviorSubject(this.currentUser);
   }
 
@@ -45,19 +46,20 @@ export class UserService {
   signupUser(signupInfo:Object){
     return this.http.post('http://localhost:5000/auth/signup',signupInfo);
   }
-
+  
   loginUser(userInfo:Object){
-    this.http.post('http://localhost:5000/auth/login',userInfo)
-    .subscribe( data => {
-      const loggedUser:any = data
-      console.log(loggedUser);
-      this.currentUser = {...loggedUser.user,accessToken:loggedUser.accessToken}
-      const cookieDuration:Number = 60*60*24*7
-      document.cookie = `refreshToken=${loggedUser.refreshToken};max-age:${cookieDuration}`
-      console.log(this.currentUser);
-      this.eventChange();
-    });
+    return this.http.post('http://localhost:5000/auth/login',userInfo)
   }
+
+  updateLoginUser(data:any){
+    const loggedUser:any = data
+    this.currentUser = {...loggedUser.user,accessToken:loggedUser.accessToken}
+    const cookieDuration:Number = 60*60*24*7
+    document.cookie = `refreshToken=${loggedUser.refreshToken};max-age:${cookieDuration}`
+    this.eventChange();
+    this.router.navigate(["/logger"]);
+  }
+
 
   logoutUser(){
     this.currentUser = {

@@ -31,9 +31,12 @@ export class LandingComponent implements OnInit {
   handleSubmitLogin(event:any){
     event.preventDefault();
     const user = {email: this.userEmail,password: this.userPassword};
-    this.userService.loginUser(user);
-    this.router.navigate(["/logger"]);
-    console.log(user);
+    this.userService.loginUser(user)
+    .subscribe(
+      data => this.userService.updateLoginUser(data),
+      err => this.errMsg = err.error.message
+    );
+
   }
 
   handleSubmitSignup(event:any){
@@ -47,8 +50,8 @@ export class LandingComponent implements OnInit {
     this.errMsg = this.userService.validateSignup({...newUser, userCfmPassword:this.userCfmPassword});
 
     if(typeof this.errMsg.length === "undefined"){
-      this.userService.signupUser(newUser);
-      this.router.navigate(["/landing"]);
+      this.userService.signupUser(newUser)
+      .subscribe(data=>{},err=>{err.error.message});
     }
   }
 
