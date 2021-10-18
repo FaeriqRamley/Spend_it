@@ -10,6 +10,8 @@ import { LoggerComponent } from './logger/logger.component';
 import { WalletComponent } from './wallet/wallet.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 import { LandingComponent } from './landing/landing.component';
+import { BsDatepickerModule,BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,11 @@ import { LandingComponent } from './landing/landing.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [BsDatepickerConfig],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
