@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { httpInterceptorProviders } from './http-interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoggerComponent } from './logger/logger.component';
@@ -32,7 +33,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot()
   ],
-  providers: [BsDatepickerConfig],
+  providers: [BsDatepickerConfig,httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
