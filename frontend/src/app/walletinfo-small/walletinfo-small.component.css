@@ -1,0 +1,21 @@
+.positive-cash{
+    color:green;
+}
+.negative-cash{
+    color:red;
+}
+
+.left-info{
+    text-align: left;
+}
+.right-info{
+    text-align: right;
+}
+@media screen and (max-width:576px){
+    .left-info{
+        text-align: center;
+    }
+    .right-info{
+        text-align: center;
+    }
+}

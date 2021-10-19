@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import IExpense from '../interfaces/expenseInterface';
 import { ExpenseService } from '../services/expense.service';
 import { UserService } from '../services/user.service';
+import { WalletInfoService } from '../services/wallet-info.service';
 
 @Component({
   selector: 'app-logger',
@@ -9,7 +10,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./logger.component.css']
 })
 export class LoggerComponent implements OnInit {
-  constructor(private expenseService:ExpenseService,private userService:UserService) { }
+  constructor(private expenseService:ExpenseService,private userService:UserService,private walletInfoService:WalletInfoService) { }
   title=''
   value=0
   date= new Date();
@@ -39,6 +40,7 @@ export class LoggerComponent implements OnInit {
     .subscribe(
       data=>{
         console.log('entry success');
+        this.walletInfoService.getLatestUserWallet();
       },
       err=>{
         if (err.status===401){

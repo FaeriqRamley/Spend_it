@@ -50,10 +50,10 @@ module.exports.put_updateUserTable = async(req,res) => {
         const sumBudgetTotal = budgetSums[0].totalsum
         const sumSavingsCurrent = goalSum[0].sum
 
-        const actual_income = sumIncome - sumExpense
-        const disposable_income = sumIncome - sumExpense - sumBudgetTotal - sumSavingsCurrent
-        const current_budget = sumBudgetCurrent
-        const net_worth = sumIncome - sumExpense - sumBudgetTotal
+        const actual_income = sumIncome - sumExpense + 0
+        const disposable_income = sumIncome - sumExpense - sumBudgetTotal - sumSavingsCurrent + 0
+        const current_budget = sumBudgetCurrent + 0
+        const net_worth = sumIncome - sumExpense - sumBudgetTotal + 0
 
         const userCalcInfo = await CalculatedInfo.findOne({
             where: {
@@ -61,8 +61,8 @@ module.exports.put_updateUserTable = async(req,res) => {
             }
         });
 
-        await userCalcInfo.update({actual_income,disposable_income,current_budget,net_worth})
-        res.status(200).send({message:"Finished"})
+        const newCalcInfo = await userCalcInfo.update({actual_income,disposable_income,current_budget,net_worth})
+        res.status(200).send(newCalcInfo)
     }catch(err){
         res.status(400).send(err)
     }   

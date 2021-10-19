@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 // import IUser from '../interfaces/userInterface';
 import { HttpClient } from '@angular/common/http';
 import { Observable,throwError,BehaviorSubject } from 'rxjs';
 import {catchError,retry} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { WalletInfoService } from './wallet-info.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private injector:Injector) {
     this.observableUser = new BehaviorSubject(this.currentUser);
   }
 
@@ -126,6 +127,8 @@ export class UserService {
         console.log(error)
       },()=>{
         console.log(this.currentUser);
+        const wallet = this.injector.get(WalletInfoService);
+        wallet.getLatestUserWallet();
       })
     }
   }

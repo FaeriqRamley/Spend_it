@@ -1,0 +1,18 @@
+<div class='d-sm-flex justify-content-between'>
+    <div class='d-flex flex-column left-info'>
+        <div>
+            <h5 style='font-weight: lighter;'>Net Worth</h5>
+        </div>
+        <div>
+            <h3 [class]="netWorthClass">{{walletInfo.net_worth | currency}}</h3>
+        </div>
+    </div>
+    <div class='d-flex flex-column right-info'>
+        <div>
+            <h5 style='font-weight: lighter;'>Actual Income</h5>
+        </div>
+        <div>
+            <h3>{{walletInfo.actual_income | currency}}</h3>
+        </div>
+    </div>
+</div>
