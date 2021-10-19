@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit {
         this.isLoggedIn = true;
         this.clsNavLink = 'nav-link'
         this.username = "Welcome, " + item.username;
-        
       }
     })  
   }

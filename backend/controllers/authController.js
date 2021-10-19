@@ -81,19 +81,22 @@ module.exports.post_login = async (req,res) => {
 }
 
 // Refresh not tested with cookies
-module.exports.post_refreshToken = async (req,res) => {
+module.exports.post_verifyAndRefreshToken = async (req,res) => {
     
     const refreshToken = req.body.refreshToken;
     jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET, (err,user) => {
         if(err){
             return res.status(400).send({message:"invalid refresh"})
         } else{
-            const accessToken = generateAccessToken({
+            
+            const currUser = {
                 uuid: user.uuid,
                 username: user.username,
                 email: user.email
-            });
-            return res.status(200).send({accessToken})
+            }
+
+            const accessToken = generateAccessToken(currUser);
+            return res.status(200).send({currUser,accessToken})
         }
     })
 }
