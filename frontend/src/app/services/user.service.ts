@@ -83,8 +83,9 @@ export class UserService {
     const refreshTokenObj = this.localStorage.getItem('refreshToken')
     if(refreshTokenObj){
       const input = JSON.parse(refreshTokenObj);
+      console.log(input);
       const today = new Date();
-      if(input.expiryDate <= today){
+      if(new Date(input.expiry) >= today){
         return true
       }
       else{
@@ -105,4 +106,10 @@ export class UserService {
     this.currentUser.accessToken = data.accessToken;
     this.eventChange();
   }
+
+  updateUserInfo(data:any){
+    this.currentUser = {...this.currentUser, ...data.currUser};
+    this.eventChange();
+  }
+
 }

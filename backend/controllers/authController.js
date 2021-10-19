@@ -82,7 +82,7 @@ module.exports.post_login = async (req,res) => {
 
 // Refresh not tested with cookies
 module.exports.post_verifyAndRefreshToken = async (req,res) => {
-    
+
     const refreshToken = req.body.refreshToken;
     jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET, (err,user) => {
         if(err){
