@@ -85,7 +85,7 @@ export class UserService {
       const input = JSON.parse(refreshTokenObj);
       const today = new Date();
       if(new Date(input.expiry) >= today){
-        return true
+        return input
       }
       else{
         console.log('Token expired')
@@ -113,10 +113,10 @@ export class UserService {
     this.eventChange();
   }
 
-  userAutoLogin(refreshToken:string){
-    if(this.validateRefreshToken()){
+  userRefresh(){
+    const refTokenObj = this.validateRefreshToken()
+    if(refTokenObj){
       console.log('refresh token has not expired. Logging user in');
-      const refTokenObj = JSON.parse(refreshToken);
       this.userTokenRefresh(refTokenObj.refreshToken)
       .subscribe(data => {
         console.log('Token verified and refreshed.');

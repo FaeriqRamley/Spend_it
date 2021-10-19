@@ -15,9 +15,13 @@ export class AppComponent implements OnInit{
     const refreshToken = window.localStorage.getItem('refreshToken');
     if (refreshToken){
       console.log('refresh token detected. Checking expiry...');
-      this.userService.userAutoLogin(refreshToken)
+      this.userService.userRefresh();
     } else {
       console.log("refresh token not detected");
     }
+
+    const forAccessToken = setInterval(()=>{
+      window.location.reload();
+    },(1000*60*15));
   }
 }
