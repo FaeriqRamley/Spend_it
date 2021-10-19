@@ -89,6 +89,8 @@ export class UserService {
       }
       else{
         console.log('Token expired')
+        this.logoutUser();
+        this.router.navigate(["/landing"]);
         return false
       }
     } else {
