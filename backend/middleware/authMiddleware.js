@@ -7,7 +7,7 @@ module.exports.authenticateToken = (req,res,next) => {
     if (token) {
         jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user) => {
             if (err) {
-                res.status(403).send({message:"no access"})
+                res.status(403).send({message:"no access. Token expired"})
             } else {
                 req.user = user
                 next()

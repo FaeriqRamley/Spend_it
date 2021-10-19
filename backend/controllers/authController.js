@@ -44,7 +44,7 @@ module.exports.post_signup = async (req,res) => {
 
 }
 
-module.exports.get_login = async (req,res) => {
+module.exports.post_login = async (req,res) => {
     const findUser = await User.findOne({
         where:{
             email: req.body.email
@@ -70,34 +70,30 @@ module.exports.get_login = async (req,res) => {
     const accessToken = generateAccessToken(user);
     const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET);
     
-    res.cookie(`refreshToken`,refreshToken,{
-        maxAge: 1000 * 60 * 60 * 24 * 7,
-        secure: true,
-        httpOnly: true
-    });
+    // res.cookie(`refreshToken`,refreshToken,{
+    //     maxAge: 1000 * 60 * 60 * 24 * 7,
+    //     secure: true,
+    //     httpOnly: false
+    // });
 
     // Remove refresh token once out of testing
-    res.status(200).send({accessToken,refreshToken})
+    res.status(200).send({accessToken,refreshToken,user})
 }
 
 // Refresh not tested with cookies
-module.exports.get_refreshToken = async (req,res) => {
+module.exports.post_refreshToken = async (req,res) => {
     
-    if(req.cookies["refreshToken"]){
-        const refreshToken = req.cookies["refreshToken"];
-        jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET, (err,user) => {
-            if(err){
-                return res.status(400).send(err)
-            } else{
-                const accessToken = generateAccessToken({
-                    uuid: user.uuid,
-                    username: user.username,
-                    email: user.email
-                });
-                return res.status(200).send(accessToken)
-            }
-        })
-    } else{
-        return res.status(400).send({message:"cookie not received"});
-    }
+    const refreshToken = req.body.refreshToken;
+    jwt.verify(refreshToken,process.env.REFRESH_TOKEN_SECRET, (err,user) => {
+        if(err){
+            return res.status(400).send({message:"invalid refresh"})
+        } else{
+            const accessToken = generateAccessToken({
+                uuid: user.uuid,
+                username: user.username,
+                email: user.email
+            });
+            return res.status(200).send({accessToken})
+        }
+    })
 }
