@@ -21,6 +21,7 @@ export class UserService {
     accessToken: ''
   }
 
+  public localStorage = window.localStorage;
   public observableUser:any;
 
   eventChange(){
@@ -52,10 +53,17 @@ export class UserService {
   }
 
   updateLoginUser(data:any){
-    const loggedUser:any = data
-    this.currentUser = {...loggedUser.user,accessToken:loggedUser.accessToken}
-    const cookieDuration:Number = 60*60*24*7
-    document.cookie = `refreshToken=${loggedUser.refreshToken};max-age:${cookieDuration}`
+    const loggedUser:any = data;
+    this.currentUser = {...loggedUser.user,accessToken:loggedUser.accessToken};
+    const today = new Date();
+    const expiryDate = new Date(today.getTime() + 1000 * 60 * 60 * 24 * 7)
+    const refreshTokenObj = {
+      refreshToken: data.refreshToken,
+      expiry: expiryDate 
+    }
+
+    this.localStorage.setItem('refreshToken',JSON.stringify(refreshTokenObj))
+
     this.eventChange();
     this.router.navigate(["/logger"]);
   }
@@ -67,12 +75,34 @@ export class UserService {
       email: '',
       accessToken: ''
     }
-    document.cookie = 'refreshToken=null;max-age=0';
+    this.localStorage.removeItem('refreshToken');
     this.eventChange();
   }
 
-  userTokenRefresh(){
-    
+  validateRefreshToken(){
+    const refreshTokenObj = this.localStorage.getItem('refreshToken')
+    if(refreshTokenObj){
+      const input = JSON.parse(refreshTokenObj);
+      const today = new Date();
+      if(input.expiryDate <= today){
+        return true
+      }
+      else{
+        console.log('Token expired')
+        return false
+      }
+    } else {
+      console.log("Token does not exist");
+      return false
+    }
   }
 
+  userTokenRefresh(refreshToken:string){
+    return this.http.post('http://localhost:5000/auth/refreshToken',{refreshToken})
+  }
+
+  updateAccessToken(data:any){
+    this.currentUser.accessToken = data.accessToken;
+    this.eventChange();
+  }
 }
