@@ -83,7 +83,6 @@ export class UserService {
     const refreshTokenObj = this.localStorage.getItem('refreshToken')
     if(refreshTokenObj){
       const input = JSON.parse(refreshTokenObj);
-      console.log(input);
       const today = new Date();
       if(new Date(input.expiry) >= today){
         return true
@@ -110,6 +109,23 @@ export class UserService {
   updateUserInfo(data:any){
     this.currentUser = {...this.currentUser, ...data.currUser};
     this.eventChange();
+  }
+
+  userAutoLogin(refreshToken:string){
+    if(this.validateRefreshToken()){
+      console.log('refresh token has not expired. Logging user in');
+      const refTokenObj = JSON.parse(refreshToken);
+      this.userTokenRefresh(refTokenObj.refreshToken)
+      .subscribe(data => {
+        console.log('Token verified and refreshed.');
+        this.updateAccessToken(data);
+        this.updateUserInfo(data);
+      },error=>{
+        console.log(error)
+      },()=>{
+        console.log(this.currentUser);
+      })
+    }
   }
 
 }
