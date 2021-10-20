@@ -25,7 +25,6 @@ export class SavingGoalsComponent implements OnInit {
       target:1200,
       current:957,
     },
-
   ]
 
   constructor(private modalService:BsModalService,private savingGoalsService:SavingGoalsService) {
