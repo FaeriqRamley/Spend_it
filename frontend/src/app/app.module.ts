@@ -19,6 +19,9 @@ import { WalletinfoLargeComponent } from './components/walletinfo-large/walletin
 import {MatTabsModule} from '@angular/material/tabs';
 import { SavingGoalsComponent } from './components/saving-goals/saving-goals.component';
 import { CreateModalComponent } from './components/create-modal/create-modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { SavingGoalItemComponent } from './components/saving-goal-item/saving-goal-item.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { CreateModalComponent } from './components/create-modal/create-modal.com
     WalletinfoSmallComponent,
     WalletinfoLargeComponent,
     SavingGoalsComponent,
-    CreateModalComponent
+    CreateModalComponent,
+    SavingGoalItemComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { CreateModalComponent } from './components/create-modal/create-modal.com
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
-    MatTabsModule
+    MatTabsModule,
+    ModalModule.forRoot(),
+    ProgressbarModule.forRoot()
   ],
   providers: [BsDatepickerConfig,httpInterceptorProviders],
   bootstrap: [AppComponent]

@@ -1,1 +1,13 @@
-<p>saving-goals works!</p>
+<div class='container-fluid mt-2'>
+    <div class='d-flex mb-4 justify-content-end'>
+        <button type="button" class="btn btn-outline-success button-new" (click)="openModal(template)">New Saving</button>
+    </div>
+
+    <app-saving-goal-item></app-saving-goal-item>
+
+</div>
+
+ 
+<ng-template #template>
+  <app-create-modal [modalRef]="modalRef"></app-create-modal>
+</ng-template>
