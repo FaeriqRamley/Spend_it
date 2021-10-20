@@ -3,7 +3,15 @@
         <button type="button" class="btn btn-outline-success button-new" (click)="openModal(template)">New Saving</button>
     </div>
 
-    <app-saving-goal-item></app-saving-goal-item>
+    <div *ngFor='let saving of userSavings'>
+        <app-saving-goal-item
+            [title]='saving.title'
+            [currentVal]='saving.current'
+            [targetVal]='saving.target'
+            [savingUUID]='saving.uuid'
+        >
+        </app-saving-goal-item>
+    </div>
 
 </div>
 

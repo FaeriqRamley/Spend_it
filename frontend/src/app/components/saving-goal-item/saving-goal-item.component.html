@@ -1,23 +1,26 @@
-<div class="card my-1 mx-auto" style="width: 95%;">
+<div class="card my-2 mx-auto" style="width: 95%;">
     <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <div class='d-flex justify-content-between align-items-center'>
-            
-            <progressbar></progressbar>
-            <p class='card-text save-goal'>
-                1000.50 /1500.50
-            </p>
+        <div (click)="onClickShowButtons()">
+            <h5 class="card-title">{{title}}</h5>
+            <div class='d-flex justify-content-between align-items-center'>
+                <progressbar class='progress' [value]='currentVal' [max]='targetVal' type='success'></progressbar>
+                <p class='card-text save-goal'>
+                    {{currentVal}} /{{targetVal}}
+                </p>
+            </div>
         </div>
-        <div class='d-flex mt-2 justify-content-around align-items-center'>
-            <button class='btn btn-outline-danger'>
-                Withdraw
-            </button>
-            <button class='btn btn-outline-warning'>
-                Edit
-            </button>
-            <button class='btn btn-outline-success'>
-                Deposit
-            </button>
+        <div *ngIf='showButtons'>
+            <div class='d-flex mt-2 justify-content-around align-items-center'>
+                <button class='btn btn-outline-danger'>
+                    Withdraw
+                </button>
+                <button class='btn btn-outline-warning'>
+                    Edit
+                </button>
+                <button class='btn btn-outline-success'>
+                    Deposit
+                </button>
+            </div>
         </div>
     </div>
 </div>

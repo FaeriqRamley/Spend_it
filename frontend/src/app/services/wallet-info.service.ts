@@ -27,7 +27,7 @@ export class WalletInfoService {
   }
 
   getLatestUserWallet(){
-    console.log('current Access Token:',this.userService.currentUser.uuid);
+    console.log('current Access Token:',this.userService.currentUser.accessToken);
     this.http.put(`http://localhost:5000/calculatedInfo/update/${this.userService.currentUser.uuid}`,{})
     .subscribe(
       (data:any)=>{
