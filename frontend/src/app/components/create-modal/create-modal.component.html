@@ -1,9 +1,25 @@
 <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
-      <span aria-hidden="true" class="visually-hidden">&times;</span>
-    </button>
+	<h4 class="modal-title pull-left display-7" style='font-weight:lighter;'>Create a new saving goal!</h4>
 </div>
 <div class="modal-body">
-    This is a modal.
+	<form>
+		<div class='form-group'>
+			<label for='Title'>Saving Goal Title</label>
+			<input name='Title' class='form-control' type='text' placeholder='Give it a good one' [(ngModel)]="title">
+		</div>
+		<div class='form-group'>
+			<label for='Value'>Your Target</label>
+			<input name='Value' class='form-control' type='number' min='1' placeholder='You can never have too much money!' [(ngModel)]="value">
+		</div>
+	</form>
+	<small style='color:red;'>{{errMsg}}</small>
 </div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="modalRef?.hide()">
+		Cancel
+	</button>
+	<button type="button" class='btn btn-outline-success' aria-label='Close' (click)="onClickSubmit($event)">
+		Create
+	</button>
+</div>
+
