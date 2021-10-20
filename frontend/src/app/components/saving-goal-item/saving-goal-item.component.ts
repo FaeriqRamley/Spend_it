@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SavingGoalItemComponent implements OnInit {
 
   @Input() title:string = 'Unknown Saving';
-  @Input() currentVal:number = 50;
+  @Input() currentVal:number = 70;
   @Input() targetVal:number = 100;
   @Input() savingUUID:string = "";
 
@@ -21,6 +21,7 @@ export class SavingGoalItemComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    console.log('saving goal current val:',this.currentVal, typeof this.currentVal);
   }
 
 }

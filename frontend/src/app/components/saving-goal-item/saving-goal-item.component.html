@@ -3,9 +3,9 @@
         <div (click)="onClickShowButtons()">
             <h5 class="card-title">{{title}}</h5>
             <div class='d-flex justify-content-between align-items-center'>
-                <progressbar class='progress' [value]='currentVal' [max]='targetVal' type='success'></progressbar>
+                <progressbar class='progress' [value]="currentVal" [max]='targetVal' type='success'></progressbar>
                 <p class='card-text save-goal'>
-                    {{currentVal}} /{{targetVal}}
+                    {{currentVal}}/{{targetVal}}
                 </p>
             </div>
         </div>

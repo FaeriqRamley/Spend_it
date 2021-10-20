@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
+import IUserSavings from '../interfaces/userSavingsInterface';
 
 interface createSavings {
   target:number,
@@ -13,7 +14,7 @@ interface createSavings {
 })
 
 export class SavingGoalsService {
-  public userSavings:any = []
+  public userSavings:IUserSavings[] = []
   public observableUserSavings:any;
 
   constructor(private http:HttpClient,private userService:UserService) {
@@ -30,11 +31,12 @@ export class SavingGoalsService {
       (data:any)=>{
         this.userSavings = []
         for (const saving of data){
+          console.log(data);
           this.userSavings.push({
             uuid: saving.uuid,
             title: saving.title,
-            current: saving.current,
-            target: saving.target
+            current: parseFloat(saving.current),
+            target: parseFloat(saving.target)
           })
           this.eventChange();
         }
@@ -43,6 +45,7 @@ export class SavingGoalsService {
       },
       ()=>{
         console.log('user savings refreshed')
+        console.log(this.userSavings);
       }
     )
   }
