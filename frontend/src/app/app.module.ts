@@ -15,6 +15,7 @@ import { LandingComponent } from './landing/landing.component';
 import { BsDatepickerModule,BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { WalletinfoSmallComponent } from './walletinfo-small/walletinfo-small.component';
+import { WalletinfoLargeComponent } from './walletinfo-large/walletinfo-large.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { WalletinfoSmallComponent } from './walletinfo-small/walletinfo-small.co
     WalletComponent,
     ExpensesComponent,
     LandingComponent,
-    WalletinfoSmallComponent
+    WalletinfoSmallComponent,
+    WalletinfoLargeComponent
   ],
   imports: [
     BrowserModule,
