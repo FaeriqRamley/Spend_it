@@ -7,16 +7,18 @@ import { AppComponent } from './app.component';
 
 import { httpInterceptorProviders } from './http-interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
-import { LoggerComponent } from './logger/logger.component';
-import { WalletComponent } from './wallet/wallet.component';
-import { ExpensesComponent } from './expenses/expenses.component';
-import { LandingComponent } from './landing/landing.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoggerComponent } from './components/logger/logger.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { ExpensesComponent } from './components/expenses/expenses.component';
+import { LandingComponent } from './components/landing/landing.component';
 import { BsDatepickerModule,BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
-import { WalletinfoSmallComponent } from './walletinfo-small/walletinfo-small.component';
-import { WalletinfoLargeComponent } from './walletinfo-large/walletinfo-large.component';
-import { TabsModule } from 'ngx-bootstrap/tabs';
+import { WalletinfoSmallComponent } from './components/walletinfo-small/walletinfo-small.component';
+import { WalletinfoLargeComponent } from './components/walletinfo-large/walletinfo-large.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { SavingGoalsComponent } from './components/saving-goals/saving-goals.component';
+import { CreateModalComponent } from './components/create-modal/create-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     ExpensesComponent,
     LandingComponent,
     WalletinfoSmallComponent,
-    WalletinfoLargeComponent
+    WalletinfoLargeComponent,
+    SavingGoalsComponent,
+    CreateModalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     TimepickerModule.forRoot(),
-    TabsModule.forRoot()
+    MatTabsModule
   ],
   providers: [BsDatepickerConfig,httpInterceptorProviders],
   bootstrap: [AppComponent]

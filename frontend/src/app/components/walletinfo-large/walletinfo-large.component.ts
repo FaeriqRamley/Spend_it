@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import IUserWallet from '../interfaces/userWallet';
-import { WalletInfoService } from '../services/wallet-info.service';
+import IUserWallet from '../../interfaces/userWallet';
+import { WalletInfoService } from '../../services/wallet-info.service';
 
 @Component({
   selector: 'app-walletinfo-large',

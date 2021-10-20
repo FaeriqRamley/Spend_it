@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingComponent } from './landing/landing.component';
-import { LoggerComponent } from './logger/logger.component';
-import { WalletComponent } from './wallet/wallet.component';
-import { ExpensesComponent } from './expenses/expenses.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { LoggerComponent } from './components/logger/logger.component';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { ExpensesComponent } from './components/expenses/expenses.component';
 
 const routes: Routes = [
   {path:'landing', component: LandingComponent},

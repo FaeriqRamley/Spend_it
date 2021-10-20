@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import IExpense from '../interfaces/expenseInterface';
-import { ExpenseService } from '../services/expense.service';
-import { UserService } from '../services/user.service';
-import { WalletInfoService } from '../services/wallet-info.service';
+import IExpense from '../../interfaces/expenseInterface';
+import { ExpenseService } from '../../services/expense.service';
+import { UserService } from '../../services/user.service';
+import { WalletInfoService } from '../../services/wallet-info.service';
 
 @Component({
   selector: 'app-logger',
