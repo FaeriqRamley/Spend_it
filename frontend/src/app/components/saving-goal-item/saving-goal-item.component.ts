@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,TemplateRef } from '@angular/core';
+import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
+import { WalletInfoService } from 'src/app/services/wallet-info.service';
 
 @Component({
   selector: 'app-saving-goal-item',
@@ -12,12 +14,27 @@ export class SavingGoalItemComponent implements OnInit {
   @Input() targetVal:number = 100;
   @Input() savingUUID:string = "";
 
-  public showButtons:boolean = false;
+  modalRef?:BsModalRef;
 
-  constructor() { }
+  public showButtons:boolean = false;
+  public clickedUpdateType:string = '';
+  public updateValue:number = 0;
+
+  constructor(private modalService:BsModalService,private walletInfoService:WalletInfoService) {}
+
+  openModal(event:any,template:TemplateRef<any>){
+    this.clickedUpdateType = event.target.value;
+    this.modalRef = this.modalService.show(template);
+  }
 
   onClickShowButtons(){
     this.showButtons = !this.showButtons;
+  }
+
+  onClickSubmitUpdateValue(event:any){
+    console.log(this.updateValue);
+    console.log(this.clickedUpdateType);
+    event.preventDefault();
   }
   
   ngOnInit(): void {

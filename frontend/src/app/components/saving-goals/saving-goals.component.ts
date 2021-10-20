@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
 import { Subscription } from 'rxjs';
 import { SavingGoalsService } from 'src/app/services/saving-goals.service';
+
 @Component({
   selector: 'app-saving-goals',
   templateUrl: './saving-goals.component.html',

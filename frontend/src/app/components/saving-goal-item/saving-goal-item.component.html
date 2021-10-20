@@ -3,24 +3,47 @@
         <div (click)="onClickShowButtons()">
             <h5 class="card-title">{{title}}</h5>
             <div class='d-flex justify-content-between align-items-center'>
-                <progressbar class='progress' [value]="currentVal" [max]='targetVal' type='success'></progressbar>
+                <progressbar class='progress' [value]="currentVal" [max]='targetVal' type='success'>{{currentVal | number:'0.2-2'}}</progressbar>
                 <p class='card-text save-goal'>
-                    {{currentVal}}/{{targetVal}}
+                    {{targetVal | number:'0.2-2'}}
                 </p>
             </div>
         </div>
         <div *ngIf='showButtons'>
             <div class='d-flex mt-2 justify-content-around align-items-center'>
-                <button class='btn btn-outline-danger'>
+                <button class='btn btn-outline-danger' value='Withdraw' (click)="openModal($event,template)">
                     Withdraw
                 </button>
-                <button class='btn btn-outline-warning'>
+                <button class='btn btn-outline-warning' value='Edit'>
                     Edit
                 </button>
-                <button class='btn btn-outline-success'>
+                <button class='btn btn-outline-success' value='Deposit' (click)="openModal($event,template)">
                     Deposit
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left display-7" style='font-weight:lighter;'>Create a new saving goal!</h4>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class='form-group'>
+                <label for='updateValue'>{{clickedUpdateType}} by</label>
+                <input name='updateValue' class='form-control' type='number' min='0' [(ngModel)]="updateValue">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="modalRef?.hide()">
+            Cancel
+        </button>
+        <button type="button" class='btn btn-outline-primary' aria-label='Close' (click)="onClickSubmitUpdateValue($event)">
+            {{clickedUpdateType}}
+        </button>
+    </div>
+</ng-template>
+

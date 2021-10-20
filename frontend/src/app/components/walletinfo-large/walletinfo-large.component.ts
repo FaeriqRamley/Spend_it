@@ -23,8 +23,6 @@ export class WalletinfoLargeComponent implements OnInit {
   ngOnInit(): void {
     this.subscription = this.walletInfoService.observableWallet
     .subscribe( (item:any)=>{
-      console.log(item);
-      console.log('networth',item.net_worth);
       if(item.net_worth > 0){
         console.log('this is true for',item.net_worth);
         this.netWorthClass = 'positive-cash';
@@ -33,7 +31,7 @@ export class WalletinfoLargeComponent implements OnInit {
       }
 
       if(item.disposable_income > 0){
-        console.log('this is true for',item.net_worth);
+        console.log('this is true for',item.disposable_income);
         this.incomeClass = 'positive-cash';
       } else{
         this.incomeClass = 'negative-cash';
@@ -46,7 +44,8 @@ export class WalletinfoLargeComponent implements OnInit {
         this.budgetClass = 'negative-cash';
       }
 
-      this.walletInfo = item
+      this.walletInfo = item;
+
     })
   }
 
