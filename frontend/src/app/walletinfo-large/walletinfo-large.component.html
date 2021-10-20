@@ -1,18 +1,38 @@
-<div class='d-sm-flex justify-content-between'>
-    <div class='d-flex flex-column left-info'>
-        <div>
-            <h5 style='font-weight: lighter;'>Net Worth</h5>
+<div class='container'>
+    <div class='d-flex justify-content-between'>
+        <div class='d-flex flex-column left-info'>
+            <div>
+                <h5>Current Budget</h5>
+            </div>
+            <div>
+                <h3 [class]="budgetClass">{{walletInfo.current_budget | currency}}</h3>
+            </div>
         </div>
-        <div>
-            <h3>networth here</h3>
+        <div class='d-flex flex-column right-info'>
+            <div>
+                <h5>Disposable Income</h5>
+            </div>
+            <div>
+                <h3 [class]="incomeClass">{{walletInfo.net_worth | currency}}</h3>
+            </div>
         </div>
     </div>
-    <div class='d-flex flex-column right-info'>
-        <div>
-            <h5 style='font-weight: lighter;'>Actual Income</h5>
+    <div class='d-flex justify-content-between'>
+        <div class='d-flex flex-column left-info'>
+            <div>
+                <h5>Net Worth</h5>
+            </div>
+            <div>
+                <h3 [class]="netWorthClass">{{walletInfo.net_worth | currency}}</h3>
+            </div>
         </div>
-        <div>
-            <h3>actual income here</h3>
+        <div class='d-flex flex-column right-info'>
+            <div>
+                <h5>Actual Income</h5>
+            </div>
+            <div>
+                <h3>{{walletInfo.actual_income | currency}}</h3>
+            </div>
         </div>
     </div>
 </div>

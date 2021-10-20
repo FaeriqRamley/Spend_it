@@ -13,12 +13,13 @@
     text-align: right;
 }
 
+
 h5 {
-    font-size: 12vw;
+    font-size: 2vw;
 }
 
 h3{
-    font-size: 12vw;
+    font-size: 3vw;
 }
 
 @media screen and (max-width:576px){
@@ -28,4 +29,12 @@ h3{
     .right-info{
         text-align: center;
     }
+    h5 {
+        font-size: 1em;
+    }
+    
+    h3{
+        font-size: 1.17em;
+    }
+    
 }

@@ -1,0 +1,56 @@
+.positive-cash{
+    color:green;
+}
+.negative-cash{
+    color:red;
+}
+
+.left-info{
+    text-align: left;
+}
+
+.right-info{
+    text-align: right;
+}
+
+
+h5 {
+    font-weight: lighter;
+}
+
+h3{
+}
+
+@media screen and (max-width:350px){
+    .left-info{
+        text-align: center;
+    }
+    .right-info{
+        text-align: center;
+    }
+    h5 {
+        font-size: 1em;
+    }
+    
+    h3{
+        font-size: 1.17em;
+    }
+    
+}
+
+@media screen and (max-width:200px){
+    .left-info{
+        text-align: center;
+    }
+    .right-info{
+        text-align: center;
+    }
+    h5 {
+        font-size: 1em;
+    }
+    
+    h3{
+        font-size: 1.17em;
+    }
+    
+}

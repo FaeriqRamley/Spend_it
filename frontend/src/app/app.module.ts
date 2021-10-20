@@ -16,6 +16,7 @@ import { BsDatepickerModule,BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { WalletinfoSmallComponent } from './walletinfo-small/walletinfo-small.component';
 import { WalletinfoLargeComponent } from './walletinfo-large/walletinfo-large.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WalletinfoLargeComponent } from './walletinfo-large/walletinfo-large.co
     HttpClientModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
-    TimepickerModule.forRoot()
+    TimepickerModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [BsDatepickerConfig,httpInterceptorProviders],
   bootstrap: [AppComponent]
