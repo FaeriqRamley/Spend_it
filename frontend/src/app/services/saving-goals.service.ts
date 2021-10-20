@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import IUserSavings from '../interfaces/userSavingsInterface';
+import { WalletInfoService } from './wallet-info.service';
 
 interface createSavings {
   target:number,
@@ -17,7 +18,7 @@ export class SavingGoalsService {
   public userSavings:IUserSavings[] = []
   public observableUserSavings:any;
 
-  constructor(private http:HttpClient,private userService:UserService) {
+  constructor(private http:HttpClient,private userService:UserService, private walletInfoService:WalletInfoService) {
     this.observableUserSavings = new BehaviorSubject(this.userSavings)
   }
   
@@ -61,6 +62,22 @@ export class SavingGoalsService {
       },
       ()=>{
         console.log('create user done');
+      }
+    )
+  }
+
+  updateSavingsValue(value:number,type:string,uuid:string){
+    this.http.put(`http://localhost:5000/savingGoal/updateGoalValue/${uuid}`,{type,value})
+    .subscribe(
+      data=>{
+        this.refreshUserSavings();
+        this.walletInfoService.getLatestUserWallet();
+      },
+      err=>{
+        console.log('updateSavingsValue error:',err)
+      },
+      ()=>{
+        console.log('update savings value done')
       }
     )
   }

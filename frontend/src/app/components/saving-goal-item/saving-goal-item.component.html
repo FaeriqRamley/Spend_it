@@ -35,6 +35,7 @@
                 <label for='updateValue'>{{clickedUpdateType}} by</label>
                 <input name='updateValue' class='form-control' type='number' min='0' [(ngModel)]="updateValue">
             </div>
+            <small style='color:red;'>{{updateErrMsg}}</small>
         </form>
     </div>
     <div class="modal-footer">

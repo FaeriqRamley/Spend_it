@@ -5,7 +5,8 @@ module.exports.get_viewGoals = async (req,res) => {
         const userGoals = await SavingGoal.findAll({
             where:{
                 users_uuid: req.params.useruuid
-            }
+            },
+            order:[['createdAt','ASC']]
         })
         res.status(200).send(userGoals);
     } catch(err){
