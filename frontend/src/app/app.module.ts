@@ -22,6 +22,11 @@ import { CreateModalComponent } from './components/create-modal/create-modal.com
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SavingGoalItemComponent } from './components/saving-goal-item/saving-goal-item.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { BudgetComponent } from './components/budget/budget.component';
+import { BudgetCreateModalComponent } from './components/budget-create-modal/budget-create-modal.component';
+import { BudgetExpensesModalComponent } from './components/budget-expenses-modal/budget-expenses-modal.component';
+import { BudgetItemComponent } from './components/budget-item/budget-item.component';
+import { BudgetEditModalComponent } from './components/budget-edit-modal/budget-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,12 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     WalletinfoLargeComponent,
     SavingGoalsComponent,
     CreateModalComponent,
-    SavingGoalItemComponent
+    SavingGoalItemComponent,
+    BudgetComponent,
+    BudgetCreateModalComponent,
+    BudgetExpensesModalComponent,
+    BudgetItemComponent,
+    BudgetEditModalComponent
   ],
   imports: [
     BrowserModule,
