@@ -1,1 +1,14 @@
-<p>budget works!</p>
+<div class='container-fluid mt-2'>
+    <div class='d-flex mb-4 justify-content-end'>
+        <button type="button" class="btn btn-outline-success button-new" (click)="openModal(template)">New Budget</button>
+    </div>
+
+    <div *ngFor='let budget of userBudgets'>
+        <app-budget-item></app-budget-item>
+    </div>
+</div>
+
+ 
+<ng-template #template>
+  <app-budget-create-modal [modalRef]="modalRef"></app-budget-create-modal>
+</ng-template>

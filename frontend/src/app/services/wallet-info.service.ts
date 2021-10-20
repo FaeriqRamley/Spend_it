@@ -18,7 +18,6 @@ export class WalletInfoService {
     net_worth:0,
     disposable_income:0,
   }
-
   
   public observableWallet:any;
 
