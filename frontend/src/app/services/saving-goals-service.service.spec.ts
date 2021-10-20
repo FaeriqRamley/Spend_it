@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SavingGoalsServiceService } from './saving-goals-service.service';
+import { SavingGoalsService } from './saving-goals.service';
 
 describe('SavingGoalsServiceService', () => {
-  let service: SavingGoalsServiceService;
+  let service: SavingGoalsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SavingGoalsServiceService);
+    service = TestBed.inject(SavingGoalsService);
   });
 
   it('should be created', () => {

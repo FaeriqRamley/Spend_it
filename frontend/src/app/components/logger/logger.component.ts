@@ -53,8 +53,6 @@ export class LoggerComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log(this.date.getFullYear());
-    console.log(this.time);
   }
 
 }

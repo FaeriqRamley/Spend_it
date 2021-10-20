@@ -5,6 +5,7 @@ import { Observable,throwError,BehaviorSubject } from 'rxjs';
 import {catchError,retry} from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { WalletInfoService } from './wallet-info.service';
+import { SavingGoalsService } from './saving-goals.service';
 
 @Injectable({
   providedIn: 'root'
@@ -128,7 +129,9 @@ export class UserService {
       },()=>{
         console.log(this.currentUser);
         const wallet = this.injector.get(WalletInfoService);
+        const savings = this.injector.get(SavingGoalsService);
         wallet.getLatestUserWallet();
+        savings.refreshUserSavings();
       })
     }
   }
