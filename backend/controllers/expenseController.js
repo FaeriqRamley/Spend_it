@@ -8,7 +8,8 @@ module.exports.get_viewUser = async (req,res) => {
         const userExpenses = await Expense.findAll({
             where:{
                 users_uuid: req.params.useruuid
-            }
+            },
+            order:[['date','DESC']]
         })
         res.status(200).send(userExpenses)
     }catch(err){
