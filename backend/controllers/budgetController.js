@@ -37,9 +37,11 @@ module.exports.delete_deleteUserBudget = async (req,res) => {
     try{
         const userBudget = await Budget.findByPk(req.params.budgetuuid);
         await userBudget.destroy();
+        console.log('==== userbudget destroyed ====')
         await Expense.update({budget_uuid:null},{where:{budget_uuid:req.params.budgetuuid}});
-        res.status(200).send("budget deleted")
+        res.status(200).send({message:"budget deleted"})
     } catch(err){
+        console.log('====error in the backend====')
         res.status(400).send(err)
     }
 }

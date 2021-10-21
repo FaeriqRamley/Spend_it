@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, TemplateRef } from '@angular/core';
 import { BsModalService,BsModalRef } from 'ngx-bootstrap/modal';
-import { SavingGoalsService } from 'src/app/services/saving-goals.service';
+import { BudgetService } from 'src/app/services/budget.service';
 import { WalletInfoService } from 'src/app/services/wallet-info.service';
+
 @Component({
   selector: 'app-budget-item',
   templateUrl: './budget-item.component.html',
@@ -22,7 +23,7 @@ export class BudgetItemComponent implements OnInit {
   public updateValue:number = 0;
   public updateErrMsg: string = '';
 
-  constructor(private modalService:BsModalService, private walletInfoService:WalletInfoService, private savingGoalsService:SavingGoalsService) {}
+  constructor(private modalService:BsModalService, private walletInfoService:WalletInfoService, private budgetService:BudgetService) {}
 
   openModal(template:TemplateRef<any>){
     this.modalRef = this.modalService.show(template);
@@ -34,6 +35,10 @@ export class BudgetItemComponent implements OnInit {
 
 
   onClickSubmitUpdateValue(event:any){
+  }
+
+  onClickDeleteBudget(){
+    this.budgetService.deleteBudget(this.budgetUUID);
   }
   
   ngOnInit(): void {

@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Injector } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import IUserBudget from '../interfaces/userBudgetInterface';
 import { UserService } from './user.service';
+import { WalletInfoService } from './wallet-info.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class BudgetService {
   public userBudget:IUserBudget[] = [];
   public observableBudget:any;
 
-  constructor(private http:HttpClient,private userService:UserService) {
+  constructor(private http:HttpClient,private userService:UserService, private walletInfoService:WalletInfoService) {
     this.observableBudget = new BehaviorSubject(this.userBudget);
   }
 
@@ -60,11 +61,12 @@ export class BudgetService {
       ()=>{
         console.log('create budget done');
         this.getLatestBudget();
+        this.walletInfoService.getLatestUserWallet();
       }
     )
   }
 
-  deleteBudet(budgetUUID:any){
+  deleteBudget(budgetUUID:any){
     this.http.delete(`http://localhost:5000/budget/deleteBudget/${budgetUUID}`)
     .subscribe(
       data=>{
@@ -76,6 +78,7 @@ export class BudgetService {
       ()=>{
         console.log('delete budget done');
         this.getLatestBudget();
+        this.walletInfoService.getLatestUserWallet();
       }
     )
   }
