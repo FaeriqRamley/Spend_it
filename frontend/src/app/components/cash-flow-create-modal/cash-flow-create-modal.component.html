@@ -1,42 +1,44 @@
 <div class="modal-header">
-	<h4 class="modal-title pull-left display-7" style='font-weight:lighter;'>Create a new budget!</h4>
+	<h4 class="modal-title pull-left display-7" style='font-weight:lighter;'>Create New Cashflow</h4>
 </div>
 
-<!-- <div class="modal-body">
+<div class="modal-body">
 	<form>
 		<div class='form-group'>
-			<label for='title'>Budget Title</label>
-			<input name='title' class='form-control' type='text' placeholder='Give it a good one' [(ngModel)]="title">
+			<label for='title'>Cashflow Title</label>
+			<input name='title' class='form-control' type='text' placeholder="Don't forget to unsubscribe!" [(ngModel)]="title">
+		</div>
+		<div class="form-check">
+			<input name='is_income' class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [(ngModel)]='is_income'>
+			<label class="form-check-label" for="flexSwitchCheckDefault">{{is_income ? 'Income Cashflow':'Expense Cashflow'}}</label>
 		</div>
 		<div class='form-group'>
-			<label for='total'>Set Your Budget</label>
-			<input name='total' class='form-control' type='number' min='1' placeholder='' [(ngModel)]="total">
+			<label for='value'>Cashflow Value</label>
+			<input name='value' class='form-control' type='number' min='1' placeholder='' [(ngModel)]="value">
 		</div>
 		<div class='form-group'>
-			<label for='dateStart'>Budget Start Date</label>
+			<label for='category'>Cashflow Category</label>
+			<input name='category' class='form-control' type='text' placeholder="" [(ngModel)]="category">
+		</div>
+		<div class='form-group'>
+			<label for='dateStart'>Start Payment Date</label>
             <input type="text"
-                [placeholder]="dateStart | date:'short'"
-                class="form-control"
-                [bsConfig]="{showTodayButton:true}"
-                [(ngModel)]='dateStart'
-				[maxDate]='today'
-                name='dateStart'
-				placement='bottom'
-                bsDatepicker
+			[placeholder]="next_payment_date | date:'shortDate'"
+			class="form-control"
+			[bsConfig]="{showTodayButton:true}"
+			[(ngModel)]='next_payment_date'
+			name='dateStart'
+			placement='top'
+			bsDatepicker
             >
 		</div>
-        <div class='form-group'>
-			<label for='dateEnd'>Budget End Date</label>
-            <input type="text"
-                [placeholder]="dateEnd | date:'short'"
-                class="form-control"
-                [bsConfig]="{showTodayButton:true}"
-                [(ngModel)]='dateEnd'
-				[minDate]='dateStart'
-                name='dateEnd'
-				placement='top'
-                bsDatepicker
-            >
+		<div class="form-check">
+			<input name='by_days' class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [(ngModel)]='by_days'>
+			<label class="form-check-label" for="flexSwitchCheckDefault">{{by_days ? 'By Days':'Monthly'}}</label>
+		</div>
+		<div *ngIf='by_days' class='form-group'>
+			<label for='period'>Cashflow Interval</label>
+			<input name='period' class='form-control' type='number' min="1" [(ngModel)]="period">
 		</div>
 	</form>
 	<small style='color:red;'>{{errMsg}}</small>
@@ -46,7 +48,7 @@
 	<button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="modalRef?.hide()">
 		Cancel
 	</button>
-	<button type="button" class='btn btn-outline-success' aria-label='Close' (click)='onClickSubmitBudget()'>
+	<button type="button" class='btn btn-outline-success' aria-label='Close' (click)='onClickSubmitCashflow()'>
 		Create
 	</button>
-</div> -->
+</div>

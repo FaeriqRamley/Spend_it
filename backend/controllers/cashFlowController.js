@@ -20,7 +20,7 @@ module.exports.post_createCashFlow = async (req,res) => {
     console.log('run here');
     try{
         await CashFlow.create({...req.body,users_uuid:req.params.useruuid});
-        res.status(201).send("Cashflow created");
+        res.status(201).send({message:"Cashflow created"});
     }catch(err){
         res.status(400).send(err)
     }
