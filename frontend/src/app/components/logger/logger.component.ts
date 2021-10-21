@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BudgetService } from 'src/app/services/budget.service';
 import IExpense from '../../interfaces/expenseInterface';
 import { ExpenseService } from '../../services/expense.service';
 import { UserService } from '../../services/user.service';
@@ -10,7 +11,7 @@ import { WalletInfoService } from '../../services/wallet-info.service';
   styleUrls: ['./logger.component.css']
 })
 export class LoggerComponent implements OnInit {
-  constructor(private expenseService:ExpenseService,private userService:UserService,private walletInfoService:WalletInfoService) { }
+  constructor(private expenseService:ExpenseService,private userService:UserService,private walletInfoService:WalletInfoService,private budgetService:BudgetService) { }
   title=''
   value=0
   date= new Date();
@@ -41,6 +42,7 @@ export class LoggerComponent implements OnInit {
       data=>{
         console.log('entry success');
         this.walletInfoService.getLatestUserWallet();
+        this.budgetService.getLatestBudget();
       },
       err=>{
         if (err.status===401){

@@ -27,5 +27,13 @@
 </div>
 
 <ng-template #template>
-    <app-budget-edit-modal [modalRef]='modalRef'></app-budget-edit-modal>
+    <app-budget-edit-modal
+        [modalRef]='modalRef'
+        [budgetUUID]='budgetUUID'
+        [title]='title'
+        [currentVal]='currentVal'
+        [totalVal]='totalVal'
+        [date_start]='date_start'
+        [date_end]='date_end'
+    ></app-budget-edit-modal>
 </ng-template>

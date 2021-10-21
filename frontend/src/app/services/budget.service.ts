@@ -84,7 +84,7 @@ export class BudgetService {
   }
 
   updateBudget(budgetUUID:any,updateBody:object){
-    this.http.put(`http://localhost:5000/budget/updateBudget/${budgetUUID}`,updateBody)
+    this.http.put(`http://localhost:5000/budget/updateBudgetDetails/${budgetUUID}`,updateBody)
     .subscribe(
       data=>{
         console.log('update budget success',data)
