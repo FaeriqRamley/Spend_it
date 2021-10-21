@@ -49,9 +49,9 @@ export class LandingComponent implements OnInit {
 
     this.errMsg = this.userService.validateSignup({...newUser, userCfmPassword:this.userCfmPassword});
 
-    if(typeof this.errMsg.length === "undefined"){
+    if(this.errMsg === ""){
       this.userService.signupUser(newUser)
-      .subscribe(data=>{},err=>{err.error.message});
+      .subscribe(data=>{console.log('signup success!')},err=>{err.error.message});
     }
   }
 

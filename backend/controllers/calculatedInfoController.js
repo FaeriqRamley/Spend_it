@@ -19,6 +19,7 @@ module.exports.get_getUserTable = async(req,res) => {
 }
 
 module.exports.put_updateUserTable = async(req,res) => {
+    console.log('==== Begin User Update Table ====');
     try{
         const incomeExpenseSums = await Expense.sequelize.query(
             `SELECT SUM(value),is_income FROM "Expenses" WHERE users_uuid=? GROUP BY is_income`,
@@ -43,9 +44,17 @@ module.exports.put_updateUserTable = async(req,res) => {
                 type: QueryTypes.SELECT
             }
         )
+        
+        let sumExpense = 0;
+        let sumIncome = 0;
+        for (const sum of incomeExpenseSums){
+            if(sum.is_income === false){
+                sumExpense = sum.sum
+            } else if (sum.is_income === true) {
+                sumIncome = sum.sum
+            }
+        }
 
-        const sumExpense = incomeExpenseSums[0].sum
-        const sumIncome = incomeExpenseSums[1].sum
         const sumBudgetCurrent = budgetSums[0].currentsum
         const sumBudgetTotal = budgetSums[0].totalsum
         const sumSavingsCurrent = goalSum[0].sum
@@ -54,7 +63,7 @@ module.exports.put_updateUserTable = async(req,res) => {
         const disposable_income = sumIncome - sumExpense - sumBudgetTotal - sumSavingsCurrent + 0
         const current_budget = sumBudgetCurrent + 0
         const net_worth = sumIncome - sumExpense - sumBudgetTotal + 0
-
+        console.log(actual_income,disposable_income,current_budget,net_worth);
         const userCalcInfo = await CalculatedInfo.findOne({
             where: {
                 users_uuid: req.params.useruuid

@@ -42,6 +42,7 @@ export class WalletInfoService {
         this.eventChange();
       },
       err=>{
+        console.log('update failed')
         console.log(err);
       },
       ()=>{
