@@ -1,1 +1,15 @@
-<p>cash-flow works!</p>
+<div class='container-fluid mt-2'>
+    <div class='d-flex mb-4 justify-content-end'>
+        <button type="button" class="btn btn-outline-success button-new" (click)="openModal(template)">New Cashflow</button>
+    </div>
+
+    <div *ngFor='let cashflow of cashFlows'>
+        <app-cash-flow-item
+        ></app-cash-flow-item>
+    </div>
+</div>
+
+ 
+<ng-template #template>
+    <app-cash-flow-create-modal [modalRef]="modalRef"></app-cash-flow-create-modal>
+</ng-template>

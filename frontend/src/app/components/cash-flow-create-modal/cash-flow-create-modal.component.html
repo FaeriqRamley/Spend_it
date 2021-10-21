@@ -1,1 +1,52 @@
-<p>cash-flow-create-modal works!</p>
+<div class="modal-header">
+	<h4 class="modal-title pull-left display-7" style='font-weight:lighter;'>Create a new budget!</h4>
+</div>
+
+<!-- <div class="modal-body">
+	<form>
+		<div class='form-group'>
+			<label for='title'>Budget Title</label>
+			<input name='title' class='form-control' type='text' placeholder='Give it a good one' [(ngModel)]="title">
+		</div>
+		<div class='form-group'>
+			<label for='total'>Set Your Budget</label>
+			<input name='total' class='form-control' type='number' min='1' placeholder='' [(ngModel)]="total">
+		</div>
+		<div class='form-group'>
+			<label for='dateStart'>Budget Start Date</label>
+            <input type="text"
+                [placeholder]="dateStart | date:'short'"
+                class="form-control"
+                [bsConfig]="{showTodayButton:true}"
+                [(ngModel)]='dateStart'
+				[maxDate]='today'
+                name='dateStart'
+				placement='bottom'
+                bsDatepicker
+            >
+		</div>
+        <div class='form-group'>
+			<label for='dateEnd'>Budget End Date</label>
+            <input type="text"
+                [placeholder]="dateEnd | date:'short'"
+                class="form-control"
+                [bsConfig]="{showTodayButton:true}"
+                [(ngModel)]='dateEnd'
+				[minDate]='dateStart'
+                name='dateEnd'
+				placement='top'
+                bsDatepicker
+            >
+		</div>
+	</form>
+	<small style='color:red;'>{{errMsg}}</small>
+</div>
+
+<div class="modal-footer">
+	<button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="modalRef?.hide()">
+		Cancel
+	</button>
+	<button type="button" class='btn btn-outline-success' aria-label='Close' (click)='onClickSubmitBudget()'>
+		Create
+	</button>
+</div> -->

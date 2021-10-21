@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
+import IUserCashFlow from 'src/app/interfaces/cashFlowInterface';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-cash-flow',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CashFlowComponent implements OnInit {
 
-  constructor() { }
+  public cashFlows:IUserCashFlow[] = []
+
+  public modalRef?:BsModalRef;
+
+ 
+  constructor(private modalService:BsModalService) { }
+
+  openModal(template:TemplateRef<any>){
+    this.modalRef = this.modalService.show(template)
+  }
 
   ngOnInit(): void {
   }
