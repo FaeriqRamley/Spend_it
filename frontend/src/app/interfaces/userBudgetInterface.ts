@@ -2,6 +2,6 @@ export default interface IUserBudget {
     title: string,
     total: number,
     current: number,
-    dateStart: Date,
-    dateEnd: Date
+    date_start: Date,
+    date_end: Date
 }

@@ -25,7 +25,7 @@ export class BudgetService {
     this.http.get(`http://localhost:5000/budget/getUserBudget/${this.userService.currentUser.uuid}`)
     .subscribe(
       (data:any)=>{
-        console.log(data);
+        this.userBudget = data;
       },
       err=>{
         console.log('getLatestBudget Error:',err);

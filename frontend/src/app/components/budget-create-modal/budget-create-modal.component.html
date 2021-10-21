@@ -19,7 +19,9 @@
                 class="form-control"
                 [bsConfig]="{showTodayButton:true}"
                 [(ngModel)]='dateStart'
+				[maxDate]='today'
                 name='dateStart'
+				placement='bottom'
                 bsDatepicker
             >
 		</div>
@@ -30,7 +32,9 @@
                 class="form-control"
                 [bsConfig]="{showTodayButton:true}"
                 [(ngModel)]='dateEnd'
+				[minDate]='dateStart'
                 name='dateEnd'
+				placement='top'
                 bsDatepicker
             >
 		</div>
@@ -42,7 +46,7 @@
 	<button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="modalRef?.hide()">
 		Cancel
 	</button>
-	<button type="button" class='btn btn-outline-success' aria-label='Close'>
+	<button type="button" class='btn btn-outline-success' aria-label='Close' (click)='onClickSubmitBudget()'>
 		Create
 	</button>
 </div>
