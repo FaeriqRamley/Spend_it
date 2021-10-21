@@ -8,6 +8,7 @@ import { WalletInfoService } from './wallet-info.service';
 import { SavingGoalsService } from './saving-goals.service';
 import { BudgetService } from './budget.service';
 import { CashFlowService } from './cash-flow.service';
+import { ExpenseService } from './expense.service';
 
 @Injectable({
   providedIn: 'root'
@@ -134,10 +135,12 @@ export class UserService {
         const savings = this.injector.get(SavingGoalsService);
         const budget = this.injector.get(BudgetService);
         const cashFlow = this.injector.get(CashFlowService);
+        const expense = this.injector.get(ExpenseService);
         wallet.getLatestUserWallet();
         savings.refreshUserSavings();
         budget.getLatestBudget();
         cashFlow.checkAndApplyCashFlows();
+        expense.getExpenses();
       })
     }
   }

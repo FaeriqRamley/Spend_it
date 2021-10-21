@@ -21,3 +21,9 @@
     background: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0));
     margin:15px auto;
 }
+
+.divider-item{
+    width: 100%;
+    background: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    margin:3px auto;
+}

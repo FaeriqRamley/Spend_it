@@ -24,21 +24,18 @@ export class WalletinfoLargeComponent implements OnInit {
     this.subscription = this.walletInfoService.observableWallet
     .subscribe( (item:any)=>{
       if(item.net_worth > 0){
-        console.log('this is true for',item.net_worth);
         this.netWorthClass = 'positive-cash';
       } else{
         this.netWorthClass = 'negative-cash';
       }
 
       if(item.disposable_income > 0){
-        console.log('this is true for',item.disposable_income);
         this.incomeClass = 'positive-cash';
       } else{
         this.incomeClass = 'negative-cash';
       }
 
       if(item.current_budget > 0){
-        console.log('this is true for',item.net_worth);
         this.budgetClass = 'positive-cash';
       } else{
         this.budgetClass = 'negative-cash';

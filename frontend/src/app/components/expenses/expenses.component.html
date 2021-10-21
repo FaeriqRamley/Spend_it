@@ -2,14 +2,15 @@
     <h1 class='display-6'>Expense History</h1>
 </div>
 <div>
-    <form>
-        <div class='form-group'>
-            <div class='d-flex justify-content-center'>
-                <input name='search-bar' type='text' class='form-control search-bar' autocomplete="off">
-                <button type='submit' class='btn btn-secondary search-button'>Search</button>
-            </div>
-        </div>
-    </form>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" aria-label="Text input with dropdown button" autocomplete="off" [ngModel]='searchStr' (ngModelChange)='onChangeDo($event)'>
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{searchParam}}</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><button class="dropdown-item" value='Category' (click)='onClickChangeParam($event)'>Search by Category</button></li>
+          <li><button class="dropdown-item" value='Title' (click)='onClickChangeParam($event)'>Search by Title</button></li>
+        </ul>
+    </div>
 </div>
 <hr class='divider'/>
 <div class='container'>
@@ -18,18 +19,22 @@
             Total
         </div>
         <div class='col-4 text-center'>
-            
+            {{total | currency}}
         </div>
     </div>
 </div>
 <hr class='divider'/>
-<div class='container'>
+<div class='container' *ngFor='let expense of displayExpenses'>
+    <hr class='divider-item'/>
     <div class='row'>
         <div class='col-8 text-start'>
-            
+            <small>{{expense.date | date:'mediumDate'}}</small>
+            <h5>{{expense.title}}</h5>
+            <small>{{expense.category}}</small>
         </div>
-        <div class='col-4 text-start'>
-
+        <div class='col-4 d-flex justify-content-center align-items-center'>
+            <h6>{{expense.value | currency}}</h6>
         </div>
     </div>
+    <hr class='divider-item'/>
 </div>
