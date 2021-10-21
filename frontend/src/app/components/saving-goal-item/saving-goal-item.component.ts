@@ -57,6 +57,7 @@ export class SavingGoalItemComponent implements OnInit {
       const newVal = this.updateValue + 0
       this.savingGoalsService.updateSavingsValue(newVal,this.clickedUpdateType,this.savingUUID)
       this.updateValue=0;
+      this.modalRef?.hide();
     } else{
       console.log('dont submit update value');
       this.updateValue=0;

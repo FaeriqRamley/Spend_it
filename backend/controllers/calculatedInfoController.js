@@ -60,7 +60,7 @@ module.exports.put_updateUserTable = async(req,res) => {
         const sumSavingsCurrent = goalSum[0].sum
 
         const actual_income = sumIncome - sumExpense + 0
-        const disposable_income = sumIncome - sumExpense - sumBudgetTotal - sumSavingsCurrent + 0
+        const disposable_income = sumIncome - sumExpense - sumBudgetCurrent - sumSavingsCurrent + 0
         const current_budget = sumBudgetCurrent + 0
         const net_worth = sumIncome - sumExpense - sumBudgetTotal + 0
         console.log(actual_income,disposable_income,current_budget,net_worth);

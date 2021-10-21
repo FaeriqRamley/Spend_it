@@ -11,6 +11,7 @@
         </div>
         <div *ngIf='showButtons'>
             <div class='d-sm-flex mt-2 justify-content-around align-items-center'>
+                <p class='card-text' style='margin: 0 auto;'>Remainder: {{currentVal | currency}}</p>
                 <p class='card-text' style='margin: 0 auto;'>Started on: {{date_start | date:'shortDate'}}</p>
                 <p class='card-text' style='margin: 0 auto;'>Ends after: {{date_end | date:'shortDate'}}</p>
             </div>

@@ -1,15 +1,19 @@
 <div class="card my-2 mx-auto" style="width: 95%;">
     <div class="card-body">
         <div (click)="onClickShowButtons()">
-            <h5 class="card-title">{{title}}</h5>
+            <h5 class="card-title">{{title}} {{currentVal | currency}}</h5>
             <div class='d-flex justify-content-between align-items-center'>
-                <progressbar class='progress' [value]="currentVal" [max]='targetVal' type='success'>{{currentVal | number:'0.2-2'}}</progressbar>
+                <progressbar class='progress' [value]="currentVal" [max]='targetVal' type='success'>{{currentVal | number:'0.0-0'}}</progressbar>
                 <p class='card-text save-goal'>
-                    {{targetVal | number:'0.2-2'}}
+                    {{targetVal | number:'0.0-0'}}
                 </p>
             </div>
         </div>
         <div *ngIf='showButtons'>
+            <div class='d-flex flex-column justify-content-center'>
+                <p class='card-text' style='text-align: center;margin:0'>Current: {{currentVal | currency}}/{{targetVal | currency}}</p>
+                <p class='card-text' style='text-align: center;'>You're {{currentVal/targetVal | percent:'1.0-1'}} to your goal!</p>
+            </div>
             <div class='d-flex mt-2 justify-content-around align-items-center'>
                 <button class='btn btn-outline-danger' value='Withdraw' (click)="openModal($event,template)">
                     Withdraw

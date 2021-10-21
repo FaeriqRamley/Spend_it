@@ -1,0 +1,23 @@
+.search-bar{
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+}
+
+.search-bar:focus{
+    box-shadow: none;
+}
+
+.search-button{
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+}
+
+.search-button:focus{
+    box-shadow: none;
+}
+
+.divider{
+    width: 100%;
+    background: radial-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    margin:15px auto;
+}
