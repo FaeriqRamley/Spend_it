@@ -26,10 +26,11 @@ export class BudgetComponent implements OnInit {
 
   ngOnInit(): void {
     this.modalRef?.setClass('modal-dialog-centered');
+    this.budgetService.getLatestBudget();
     this.subscription = this.budgetService.observableBudget
     .subscribe(
       (data:any)=>{
-        console.log('budget change detected');
+        this.userBudgets = data;
       },
       (err:any)=>{
         console.log(err);

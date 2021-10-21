@@ -30,8 +30,8 @@ export class BudgetService {
           this.userBudget.push({
             budgetUUID: budget.uuid,
             title: budget.title,
-            total: budget.total,
-            current: budget.current,
+            total: parseFloat(budget.total),
+            current: parseFloat(budget.current),
             date_start: new Date(budget.date_start),
             date_end: new Date(budget.date_end)
           })
@@ -59,6 +59,22 @@ export class BudgetService {
       },
       ()=>{
         console.log('create budget done');
+        this.getLatestBudget();
+      }
+    )
+  }
+
+  deleteBudet(budgetUUID:any){
+    this.http.delete(`http://localhost:5000/budget/deleteBudget/${budgetUUID}`)
+    .subscribe(
+      data=>{
+        console.log('delete budget success',data);
+      },
+      err=>{
+        console.log('deleteBudget Error:',err)
+      },
+      ()=>{
+        console.log('delete budget done');
         this.getLatestBudget();
       }
     )

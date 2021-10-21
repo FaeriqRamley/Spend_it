@@ -1,1 +1,27 @@
-<p>budget-item works!</p>
+<div class="card my-2 mx-auto" style="width: 95%;">
+    <div class="card-body">
+        <div (click)="onClickShowButtons()">
+            <h5 class="card-title">{{title}}</h5>
+            <div class='d-flex justify-content-between align-items-center'>
+                <progressbar class='progress' [value]="currentVal" [max]='totalVal' type='success'>{{currentVal | number:'0.2-2'}}</progressbar>
+                <p class='card-text save-goal'>
+                    {{totalVal | number:'0.2-2'}}
+                </p>
+            </div>
+        </div>
+        <div *ngIf='showButtons'>
+            <div class='d-flex mt-2 justify-content-around align-items-center'>
+                <button class='btn btn-outline-warning' value='Edit' (click)="openModal(template)">
+                    Edit
+                </button>
+                <button class='btn btn-outline-danger' value='Delete'>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <app-budget-edit-modal></app-budget-edit-modal>
+</ng-template>

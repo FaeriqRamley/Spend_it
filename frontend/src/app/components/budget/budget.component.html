@@ -4,7 +4,12 @@
     </div>
 
     <div *ngFor='let budget of userBudgets'>
-        <app-budget-item></app-budget-item>
+        <app-budget-item
+            [budgetUUID]='budget.budgetUUID'
+            [title]='budget.title'
+            [totalVal]='budget.total'
+            [currentVal]='budget.current'
+        ></app-budget-item>
     </div>
 </div>
 
