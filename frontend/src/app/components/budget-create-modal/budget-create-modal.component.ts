@@ -58,6 +58,7 @@ export class BudgetCreateModalComponent implements OnInit {
     this.errMsg = this.validateBudgetSubmit(newEntry)
     if (this.errMsg === ''){
       this.budgetService.createBudget(newEntry);
+      this.modalRef?.hide();
     } else {
       console.log('no submit! error detected');
     }
