@@ -27,6 +27,10 @@ import { BudgetCreateModalComponent } from './components/budget-create-modal/bud
 import { BudgetExpensesModalComponent } from './components/budget-expenses-modal/budget-expenses-modal.component';
 import { BudgetItemComponent } from './components/budget-item/budget-item.component';
 import { BudgetEditModalComponent } from './components/budget-edit-modal/budget-edit-modal.component';
+import { CashFlowComponent } from './components/cash-flow/cash-flow.component';
+import { CashFlowCreateModalComponent } from './components/cash-flow-create-modal/cash-flow-create-modal.component';
+import { CashFlowItemComponent } from './components/cash-flow-item/cash-flow-item.component';
+import { CashFlowEditModalComponent } from './components/cash-flow-edit-modal/cash-flow-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,11 @@ import { BudgetEditModalComponent } from './components/budget-edit-modal/budget-
     BudgetCreateModalComponent,
     BudgetExpensesModalComponent,
     BudgetItemComponent,
-    BudgetEditModalComponent
+    BudgetEditModalComponent,
+    CashFlowComponent,
+    CashFlowCreateModalComponent,
+    CashFlowItemComponent,
+    CashFlowEditModalComponent
   ],
   imports: [
     BrowserModule,

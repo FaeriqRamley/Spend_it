@@ -33,10 +33,6 @@ export class BudgetItemComponent implements OnInit {
     this.showButtons = !this.showButtons;
   }
 
-
-  onClickSubmitUpdateValue(event:any){
-  }
-
   onClickDeleteBudget(){
     this.budgetService.deleteBudget(this.budgetUUID);
   }
