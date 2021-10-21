@@ -21,6 +21,18 @@ export class LoggerComponent implements OnInit {
   is_income=false;
   errMsg = '';
   
+  validateSubmitExpense(input:IExpense){
+    let outputMsg = '';
+    if(input.title.length === 0){
+      outputMsg += 'title cannot be empty '
+    }
+    if(input.value < 0){
+      outputMsg += 'value cannot be negative'
+    }
+
+    return outputMsg;
+  }
+
   handleSubmitExpense(event:any){
     event.preventDefault()
     // create dateTime object
@@ -37,21 +49,33 @@ export class LoggerComponent implements OnInit {
       category:this.category,
     }
     //validate object here
-    this.expenseService.postExpense(newExpense)
-    .subscribe(
-      data=>{
-        console.log('entry success');
-        this.walletInfoService.getLatestUserWallet();
-        this.budgetService.getLatestBudget();
-      },
-      err=>{
-        if (err.status===401){
-          console.log(err);
-          this.errMsg = `${err.error.message}. Please refresh the page.`
+    this.errMsg = this.validateSubmitExpense(newExpense);
+
+    if(this.errMsg === ''){
+      this.expenseService.postExpense(newExpense)
+      .subscribe(
+        data=>{
+          console.log('entry success');
+          this.walletInfoService.getLatestUserWallet();
+          this.budgetService.getLatestBudget();
+          this.expenseService.getExpenses();
+        },
+        err=>{
+          if (err.status===401){
+            console.log(err);
+            this.errMsg = `${err.error.message}. Please refresh the page.`
+          }
+        },
+        ()=>{
+          this.title = '';
+          this.value = 0;
+          this.category = '';
         }
-      }
-    )
-    console.log(newExpense);
+      )
+      console.log(newExpense);
+    } else{
+      console.log('not submitted');
+    }
   }
   
   ngOnInit(): void {

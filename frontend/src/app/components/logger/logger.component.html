@@ -7,11 +7,11 @@
     <form (submit)="handleSubmitExpense($event)">
         <div class='form-group'>
             <label for='title'>Title</label>
-            <input id='title' type='text' class='form-control' placeholder="Enter name of expense" name='title' [(ngModel)]='title'>
+            <input id='title' type='text' class='form-control' placeholder="Enter name of expense" name='title' autocomplete='off' [(ngModel)]='title'>
         </div>
         <div class='form-group'>
             <label for='value'>Value</label>
-            <input id='value' type='number' class='form-control' placeholder="Value of expense" name='value' [(ngModel)]='value'>
+            <input id='value' type='number' class='form-control' placeholder="Value of expense" name='value' autocomplete='off' [(ngModel)]='value'>
         </div>
         <div class='form-group'>
             <label for='value'>Date</label>
@@ -33,14 +33,16 @@
         </div>
         <div class='form-group'>
             <label for='category'>Expense Value</label>
-            <input id='category' type='text' class='form-control' placeholder="Category" name='category' [(ngModel)]='category'>
+            <input id='category' type='text' class='form-control' placeholder="Category" name='category' autocomplete='off' [(ngModel)]='category'>
+        </div>
+        <div class='d-flex justify-content-center'>
+            <small style='color: red;'>
+                {{errMsg}}
+            </small>
         </div>
         <div class='d-flex justify-content-around'>
             <button class='btn btn-success' type="submit" value='income'>Add Income</button>
             <button class='btn btn-danger' type="submit" value='expense'>Add Expense</button>
         </div>
     </form>
-    <div>
-        {{errMsg}}
-    </div>
 </div>
