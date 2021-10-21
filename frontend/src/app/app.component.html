@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
-<div id='background'>
+<div [ngClass]='bgClass'>
+  <div class="container-fluid py-4 w-90">
+    <router-outlet></router-outlet>
+  </div>  
 </div>
-<div class="container my-4 w-90">
-  <router-outlet></router-outlet>
-</div>  
+  

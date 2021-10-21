@@ -3,3 +3,11 @@
     border-bottom: 1px solid rgba(0,0,0,0.6);
     box-shadow: 0px 3px 6px 1px rgba(0,0,0,0.5);
 }
+
+.negative{
+    background-color:#C23434;
+}
+
+.positive{
+    background-color: #6DC234;
+}
