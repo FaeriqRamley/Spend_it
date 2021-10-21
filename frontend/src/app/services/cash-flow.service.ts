@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import IUserCashFlow from '../interfaces/cashFlowInterface';
 import { UserService } from './user.service';
+import { WalletInfoService } from './wallet-info.service';
+import {BudgetService} from './budget.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class CashFlowService {
   public userCashFlows:IUserCashFlow[] = [];
   public observableUserCashFlows:any;
 
-  constructor(private http:HttpClient,private userService:UserService) {
+  constructor(private http:HttpClient,private userService:UserService,private walletInfoService:WalletInfoService, private budgetService:BudgetService) {
     this.observableUserCashFlows = new BehaviorSubject(this.userCashFlows);
   }
 
@@ -50,6 +52,24 @@ export class CashFlowService {
     )
   }
 
+  checkAndApplyCashFlows(){
+    this.http.get(`http://localhost:5000/cashFlow/checkApplyCashFlows/${this.userService.currentUser.uuid}`)
+    .subscribe(
+      data=>{
+        console.log('checkAndApplyCashFlows success');
+      },
+      err=>{
+        console.log('checkAndApplyCashFlows Error',err)
+      },
+      ()=>{
+        console.log('checkAndApplyCashFlows done');
+        this.getLatestCashFlows();
+        this.walletInfoService.getLatestUserWallet();
+        this.budgetService.getLatestBudget();
+      }
+    )
+  }
+
   createCashFlow(input:IUserCashFlow){
     this.http.post(`http://localhost:5000/cashFlow/createCashFlow/${this.userService.currentUser.uuid}`,input)
     .subscribe(
@@ -62,7 +82,7 @@ export class CashFlowService {
       },
       ()=>{
         console.log('createCashFlow done');
-        this.getLatestCashFlows();
+        this.checkAndApplyCashFlows();
       }
     )
   }

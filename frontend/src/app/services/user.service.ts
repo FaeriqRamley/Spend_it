@@ -137,7 +137,7 @@ export class UserService {
         wallet.getLatestUserWallet();
         savings.refreshUserSavings();
         budget.getLatestBudget();
-        cashFlow.getLatestCashFlows();
+        cashFlow.checkAndApplyCashFlows();
       })
     }
   }

@@ -31,7 +31,7 @@ export class CashFlowItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.cashflowClass = this.is_income ? 'card-title income':'card-title expense'
   }
 
 }
