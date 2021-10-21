@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { WalletInfoService } from './wallet-info.service';
 import { SavingGoalsService } from './saving-goals.service';
 import { BudgetService } from './budget.service';
+import { CashFlowService } from './cash-flow.service';
 
 @Injectable({
   providedIn: 'root'
@@ -132,9 +133,11 @@ export class UserService {
         const wallet = this.injector.get(WalletInfoService);
         const savings = this.injector.get(SavingGoalsService);
         const budget = this.injector.get(BudgetService);
+        const cashFlow = this.injector.get(CashFlowService);
         wallet.getLatestUserWallet();
         savings.refreshUserSavings();
         budget.getLatestBudget();
+        cashFlow.getLatestCashFlows();
       })
     }
   }
