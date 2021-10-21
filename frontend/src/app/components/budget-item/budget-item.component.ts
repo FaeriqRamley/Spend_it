@@ -42,6 +42,9 @@ export class BudgetItemComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    console.log('here are the budget dates...');
+    console.log(this.date_end);
+    console.log(this.date_start);
   }
 
 }

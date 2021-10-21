@@ -1,4 +1,4 @@
-import { Injectable,Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import IUserBudget from '../interfaces/userBudgetInterface';
@@ -77,6 +77,23 @@ export class BudgetService {
       },
       ()=>{
         console.log('delete budget done');
+        this.getLatestBudget();
+        this.walletInfoService.getLatestUserWallet();
+      }
+    )
+  }
+
+  updateBudget(budgetUUID:any,updateBody:object){
+    this.http.put(`http://localhost:5000/budget/updateBudget/${budgetUUID}`,updateBody)
+    .subscribe(
+      data=>{
+        console.log('update budget success',data)
+      },
+      err=>{
+        console.log('update budget error:',err)
+      },
+      ()=>{
+        console.log('update budget done');
         this.getLatestBudget();
         this.walletInfoService.getLatestUserWallet();
       }

@@ -10,6 +10,10 @@
             </div>
         </div>
         <div *ngIf='showButtons'>
+            <div class='d-sm-flex mt-2 justify-content-around align-items-center'>
+                <p class='card-text' style='margin: 0 auto;'>Started on: {{date_start | date:'shortDate'}}</p>
+                <p class='card-text' style='margin: 0 auto;'>Ends after: {{date_end | date:'shortDate'}}</p>
+            </div>
             <div class='d-flex mt-2 justify-content-around align-items-center'>
                 <button class='btn btn-outline-warning' value='Edit' (click)="openModal(template)">
                     Edit
@@ -23,5 +27,5 @@
 </div>
 
 <ng-template #template>
-    <app-budget-edit-modal></app-budget-edit-modal>
+    <app-budget-edit-modal [modalRef]='modalRef'></app-budget-edit-modal>
 </ng-template>

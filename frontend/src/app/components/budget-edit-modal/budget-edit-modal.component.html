@@ -3,19 +3,49 @@
 </div>
 <div class="modal-body">
     <p>budget-edit-modal works!</p>
-    <!-- <form>
+    <form>
         <div class='form-group'>
-            <label for='updateValue'>{{clickedUpdateType}} by</label>
-            <input name='updateValue' class='form-control' type='number' min='0' [(ngModel)]="updateValue">
+            <label for='title'>Change Title to</label>
+            <input name='title' class='form-control' type='text' [(ngModel)]="title">
         </div>
-        <small style='color:red;'>{{updateErrMsg}}</small>
+        <div class='form-group'>
+            <label for='total'>Set New Total</label>
+            <input name='total' class='form-control' type='number' min='1' [(ngModel)]="totalVal">
+        </div>
+        <div class='form-group'>
+			<label for='date-start'>Budget Start Date</label>
+            <input type="text"
+                [placeholder]="date_start | date:'short'"
+                class="form-control"
+                [bsConfig]="{showTodayButton:true}"
+                [(ngModel)]='date_start'
+				[maxDate]='today'
+                name='date-start'
+				placement='top'
+                bsDatepicker
+            >
+		</div>
+        <div class='form-group'>
+			<label for='date-end'>Budget End Date</label>
+            <input type="text"
+                [placeholder]="date_end | date:'short'"
+                class="form-control"
+                [bsConfig]="{showTodayButton:true}"
+                [(ngModel)]='date_end'
+				[minDate]='date_start'
+                name='date-end'
+				placement='top'
+                bsDatepicker
+            >
+		</div>
+        <small style='color:red;'>{{errMsg}}</small>
     </form>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-outline-dark" aria-label="Close" (click)="modalRef?.hide()">
         Cancel
     </button>
-    <button type="button" class='btn btn-outline-primary' aria-label='Close' (click)="onClickSubmitUpdateValue($event)">
-        {{clickedUpdateType}}
-    </button> -->
+    <button type="button" class='btn btn-outline-primary' aria-label='Close' (click)="onClickUpdateBudget()">
+        Confirm Edit
+    </button>
 </div>
