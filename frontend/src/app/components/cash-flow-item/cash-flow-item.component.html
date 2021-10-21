@@ -1,1 +1,29 @@
-<p>cash-flow-item works!</p>
+<div class="card my-2 mx-auto" style="width: 95%;">
+    <div class="card-body">
+        <div class='d-flex justify-content-between align-items-center' (click)="onClickShowMoreInfo()">
+            <h5 class="card-title">{{title}}</h5>
+            <h5 [ngClass]="cashflowClass">{{value | currency}}</h5>
+        </div>
+        <div *ngIf='showMoreInfo'>
+            <hr/>
+            <div>
+                <p class='card-text' style='margin: 0 auto;'>Category: <span style='font-weight: lighter;'>{{category}}</span> </p>
+                <p class='card-text' style='margin: 0 auto;'>Next Payment Date: <span style='font-weight: lighter;'>{{next_payment_date | date:'shortDate'}}</span> </p>
+                <p class='card-text' style='margin: 0 auto;'>Payment Period:
+                    <span style='font-weight: lighter;'>
+                        {{by_days ? period : 'Monthly'}}
+                    </span>
+                </p>
+            </div>
+
+            <div class='d-flex mt-2 justify-content-around align-items-center'>
+                <button class='btn btn-outline-warning' value='Edit'>
+                    Edit
+                </button>
+                <button class='btn btn-outline-danger' value='Delete' (click)='onClickDeleteCashFlow()'>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

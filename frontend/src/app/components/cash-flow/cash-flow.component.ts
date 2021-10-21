@@ -29,6 +29,8 @@ export class CashFlowComponent implements OnInit {
     this.subscription = this.cashFlowService.observableUserCashFlows
     .subscribe(
       (item:any)=>{
+        console.log('CASHFLOW CHANGE DETECTED')
+        console.log(item)
         this.cashFlows = item;
       }
     )

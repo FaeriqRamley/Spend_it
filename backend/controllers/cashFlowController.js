@@ -40,7 +40,7 @@ module.exports.delete_deleteCashFlow = async (req,res) => {
     try{
         const deleteCashFlow = await CashFlow.findByPk(req.params.cashflowuuid);
         await deleteCashFlow.destroy();
-        res.status(200).send("Cashflow deleted");
+        res.status(200).send({message:"Cashflow deleted"});
     } catch(err){
         res.status(400).send(err)
     }

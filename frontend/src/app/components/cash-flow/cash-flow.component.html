@@ -5,11 +5,20 @@
 
     <div *ngFor='let cashflow of cashFlows'>
         <app-cash-flow-item
+            [cashflowUUID]='cashflow.cashflowUUID'
+            [value]='cashflow.value'
+            [is_income]='cashflow.is_income'
+            [title]='cashflow.title'
+            [category]='cashflow.category'
+            [next_payment_date]='cashflow.next_payment_date'
+            [by_days]='cashflow.by_days'
+            [period]='cashflow.period'
         ></app-cash-flow-item>
     </div>
 </div>
 
- 
+
 <ng-template #template>
-    <app-cash-flow-create-modal [modalRef]="modalRef"></app-cash-flow-create-modal>
+    <app-cash-flow-create-modal
+        [modalRef]="modalRef"></app-cash-flow-create-modal>
 </ng-template>
