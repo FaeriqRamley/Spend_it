@@ -21,8 +21,7 @@ export class LandingComponent implements OnInit {
   public errMsg = '';
   public response:any;
 
-  toggleLoginSignup(event:any){
-    event.preventDefault();
+  toggleLoginSignup(){
     this.userLogin = !this.userLogin;
     this.errMsg = '';
     console.log(this.userService.currentUser.username)
@@ -51,7 +50,14 @@ export class LandingComponent implements OnInit {
 
     if(this.errMsg === ""){
       this.userService.signupUser(newUser)
-      .subscribe(data=>{console.log('signup success!')},err=>{err.error.message});
+      .subscribe(
+        data=>{
+          console.log('signup success!')
+          this.toggleLoginSignup()
+        },
+        err=>{
+          err.error.message
+        });
     }
   }
 

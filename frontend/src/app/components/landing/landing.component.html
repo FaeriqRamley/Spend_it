@@ -21,7 +21,7 @@
                         <input id='password' type='password' class='form-control' placeholder="Enter your password" name='password' [(ngModel)]='userPassword'>
                     </div>
                     <div class='form-group'>
-                        <small>Don't have an account? Sign up <span class='login-toggle' (click)="toggleLoginSignup($event)">here</span></small>
+                        <small>Don't have an account? Sign up <span class='login-toggle' (click)="toggleLoginSignup()">here</span></small>
                     </div>
                     <div class='form-group' style='text-align: right;'>
                         <button class='btn btn-outline-primary' type="submit" value="login">Login</button>
@@ -58,7 +58,7 @@
                         <input id='cfm-password' type='password' class='form-control' placeholder="Confirm password" name='cfm-password' [(ngModel)]='userCfmPassword'>
                     </div>
                     <div class='form-group'>
-                        <small>Already have an account? Log in <span class='login-toggle' (click)="toggleLoginSignup($event)">here</span></small>
+                        <small>Already have an account? Log in <span class='login-toggle' (click)="toggleLoginSignup()">here</span></small>
                     </div>
                     <div class='form-group' style='text-align: right;'>
                         <button class='btn btn-outline-primary' type="submit" value="signup">Sign up</button>
@@ -67,5 +67,7 @@
             </div>
         </div>
     </ng-template>
-
+    <div class='row text-center' style='margin: 200px 0px;'>
+        <h1 class='display-5'>Promotional material here</h1>
+    </div>
 </div>
