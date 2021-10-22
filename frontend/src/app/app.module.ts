@@ -31,6 +31,8 @@ import { CashFlowComponent } from './components/cash-flow/cash-flow.component';
 import { CashFlowCreateModalComponent } from './components/cash-flow-create-modal/cash-flow-create-modal.component';
 import { CashFlowItemComponent } from './components/cash-flow-item/cash-flow-item.component';
 import { CashFlowEditModalComponent } from './components/cash-flow-edit-modal/cash-flow-edit-modal.component';
+import { InsightsComponent } from './insights/insights.component';
+import { ServiceComponent } from './service/service.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { CashFlowEditModalComponent } from './components/cash-flow-edit-modal/ca
     CashFlowComponent,
     CashFlowCreateModalComponent,
     CashFlowItemComponent,
-    CashFlowEditModalComponent
+    CashFlowEditModalComponent,
+    InsightsComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,

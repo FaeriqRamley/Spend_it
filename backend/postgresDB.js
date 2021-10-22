@@ -19,7 +19,7 @@ const testDB = async (db) => {
 // }
 
 // const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname')
-const db = new Sequelize('postgres://db_user:example@localhost:5432/proj_4_test');
+const db = new Sequelize('postgres://db_user:example@localhost:5432/proj_4_presentation');
 
 testDB(db)
 

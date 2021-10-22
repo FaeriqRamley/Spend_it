@@ -5,6 +5,7 @@ import IUserCashFlow from '../interfaces/cashFlowInterface';
 import { UserService } from './user.service';
 import { WalletInfoService } from './wallet-info.service';
 import {BudgetService} from './budget.service';
+import { ExpenseService } from './expense.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CashFlowService {
   public userCashFlows:IUserCashFlow[] = [];
   public observableUserCashFlows:any;
 
-  constructor(private http:HttpClient,private userService:UserService,private walletInfoService:WalletInfoService, private budgetService:BudgetService) {
+  constructor(private http:HttpClient,private userService:UserService,private walletInfoService:WalletInfoService, private budgetService:BudgetService, private expenseService:ExpenseService) {
     this.observableUserCashFlows = new BehaviorSubject(this.userCashFlows);
   }
 
@@ -66,6 +67,7 @@ export class CashFlowService {
         this.getLatestCashFlows();
         this.walletInfoService.getLatestUserWallet();
         this.budgetService.getLatestBudget();
+        this.expenseService.getExpenses();
       }
     )
   }
